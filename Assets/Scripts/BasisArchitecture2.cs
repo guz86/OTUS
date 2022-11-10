@@ -222,5 +222,62 @@ public class ResourceType
 
 
 //YAGNI
+//не закладывать логику которая не требуется
+public class Resource2
+{
+    public string name;
+    public int amount;
+    private int _cost;
+    public ResourceType resourceType;
+    private IResourceConverter _converter;
 
+    // а что если на цену будет влиять модификатор конвертации (скидка или что то еще)
+    public float GetCost()
+    {
+        return _cost * _converter.ConverterResource();
+    }
+}
 
+// сделали ненужный интерфейс с базовой реализацией, например возвращает 1f
+public interface IResourceConverter
+{
+    public float ConverterResource();
+}
+
+//Чистый код
+// структура класса
+// Пример структуры  Manager (высокоуровневый) => Controller, Controller
+// Если класс содержит Model, Data - хранит информацию о состоянии объекта.
+//     Методы:
+// - Ничего не принимает ничего не возвращает - глагол вывести, уничтожить, проинициализировать
+// - метод принимает параметры - SetTime InitTime - устанавливаем передаем параметры
+//     *Если параметров больше 2, то лучше вынести в прослойку класс с параметрами.
+// - если метод должен что то вернуть GetActionsAmount добавляем Get
+// - например прогресс игрока, если не всегда возвращает результат TryGetArchivementProgress
+
+public class Warrior2 {
+    public int health;
+}
+
+public class WarriorManager {
+    public Warrior2 EmptyWarrior = new Warrior2{health = 100};
+
+    private Dictionary<string, Warrior2> _map = new();
+
+    // если не нашли ничего, возвращаем  пустой объект, чтобы не поломать игру
+    public Warrior2 GetWarrior(string id) {
+        if (!_map.ContainsKey(id)) {
+            return EmptyWarrior;
+        }
+
+        return _map[id];
+    }
+}
+
+// Порядок:
+// публичные ивенты
+// публичные поля
+// приватный поля
+// публичные методы
+// приватные методы
+// методы в порядке друг за другом
