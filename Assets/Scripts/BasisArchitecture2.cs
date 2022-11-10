@@ -177,3 +177,50 @@ public class CoroutineManager : MonoBehaviour
         callback?.Invoke();
     }
 }
+
+
+// KISS
+// // имя класса соотвествует поведению
+// принцип единой отвественности
+// вытеснение блоков логики, композиция/наследование логики
+// соблюдать иерархию классов (высокоуровневые классы - менеджеры(ачивки, ресурсы игрока, сохранения...))
+
+// Менеджер -> модель -> View
+// менеджер <-> менеджер
+
+// менеджер на высоком уровне сам должен понимать что приосходить с его элементами
+
+// KISSExample
+public class Resource
+{
+    public string name;
+    public int amount;
+    private int _cost;
+    public ResourceType resourceType;
+    public float weight;
+    public int maxStackAmount;
+
+    // в зависимости от уровня торговли персонажа и продовца, стоимость меняется
+    // логика лишняя, нужно запрашивать конкретную цену с уровня выше, и затем Trading менеджер должен
+    // нормировать цену с учетом левелов
+    public float GetSellCost(int merchantLevel, int playerLevel)
+    {
+        return _cost * amount * weight * Math.Max(0, playerLevel - merchantLevel);
+    }
+
+    // дата создания ресурса лишняя, ресурс не должен знать когда он создал, это должен хранить менеджер инвентаря например
+    // можно добавить поле портится или нет, но не этот метод
+    public DateTime GetCreationTime()
+    {
+        return DateTime.Now;
+    }
+}
+
+public class ResourceType
+{
+}
+
+
+//YAGNI
+
+
