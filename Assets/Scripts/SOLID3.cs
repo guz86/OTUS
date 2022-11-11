@@ -9,7 +9,7 @@ namespace DefaultNamespace
     }
 
     // SRP Принцип единой ответственности
-    
+
     // как у класса появляется несколько отвественностей
     // враг поворачивается в сторону игрок и идет к нему - можно объединить в одну логику
 
@@ -47,7 +47,7 @@ namespace DefaultNamespace
         private int _damage;
         private int _resistance;
     }
-    
+
     // пример нарушения SRP
     // * sealed запрет наследования
     public sealed class Player : MonoBehaviour
@@ -60,15 +60,15 @@ namespace DefaultNamespace
             {
                 this.Move(Vector3.up);
             }
-            else  if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 this.Move(Vector3.down);
             }
-            else  if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 this.Move(Vector3.left);
             }
-            else  if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
                 this.Move(Vector3.right);
             }
@@ -77,50 +77,50 @@ namespace DefaultNamespace
         private void Move(Vector3 direction)
         {
             this.transform.position = direction * (Time.deltaTime * _speed);
-            this.transform.rotation = Quaternion.LookRotation(direction,Vector3.up);
+            this.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
         }
-        
-        // смешивается логика считывания с клавиатуры  Input.GetKey и логика перемещения void Move
 
-    } 
-          
+        // смешивается логика считывания с клавиатуры  Input.GetKey и логика перемещения void Move
+    }
+
     // разделение согласно SRP, разделяем на два класса
     // Player (отвественнен за перемещение) и MoveController (за считывание и передачу вектора)
-    
+
     // Input <=> Move
-    
+
     //Это позволяет менять метод ввода, ИИ может управлять перемещением,
     //и наоборот мы можем заставить систему управлять кораблем, врагом...
-    
+
     public sealed class Player2 : MonoBehaviour
     {
         [SerializeField] private float _speed;
- 
+
         public void Move(Vector3 direction)
         {
             this.transform.position = direction * _speed;
-            this.transform.rotation = Quaternion.LookRotation(direction,Vector3.up);
-        } 
+            this.transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        }
     }
 
     public sealed class MoveController
     {
         [SerializeField] private Player2 _player2;
+
         private void Update()
         {
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 this.Move(Vector3.up);
             }
-            else  if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 this.Move(Vector3.down);
             }
-            else  if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 this.Move(Vector3.left);
             }
-            else  if (Input.GetKey(KeyCode.RightArrow))
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
                 this.Move(Vector3.right);
             }
@@ -130,9 +130,8 @@ namespace DefaultNamespace
         {
             this._player2.Move(direction * Time.deltaTime);
         }
-
     }
-    
+
     // пример нарушения SRP
     // смешались логики подсчет очков и выдача достижений 
     public class ScoreController
@@ -155,11 +154,11 @@ namespace DefaultNamespace
             }
         }
     }
-    
+
     // тут одна ачивка, но их обычно много и у каждой условия, поэтому нужен менеджер
-    
+
     // Система очков PointsManager <> Система ачивок AchievementManager <> ачивка Achievement
-    
+
     // когда добавляем очки может произойти: обновление UI, возможно выдать ачивку, увеличить уровень перса, и т.д.
     // поэтому добавляем публичный ивент который будем вызывать каждый раз при добавлении очков
 
@@ -175,7 +174,7 @@ namespace DefaultNamespace
             PointsChangedEvent?.Invoke();
         }
     }
-    
+
     // для разных ачивок делаем абстрактный класс
     public abstract class Achievement
     {
@@ -186,6 +185,7 @@ namespace DefaultNamespace
     public class PointsAchievement : Achievement
     {
         private PointsManager _pointsManager;
+
         public override bool IsCompleted()
         {
             return _pointsManager.Points > 1000;
@@ -195,7 +195,9 @@ namespace DefaultNamespace
     public class AchievementManager
     {
         private List<Achievement> _achievements = new();
+
         private PointsManager _pointsManager;
+
         // чтобы лишний раз не выдавать ачивки
         private HashSet<string> _completedAchievements = new();
 
@@ -203,7 +205,6 @@ namespace DefaultNamespace
         {
             // подписывается на событие и запускает CheckAchievements
             _pointsManager.PointsChangedEvent += CheckAchievements;
-            
         }
 
         private void CheckAchievements()
@@ -222,9 +223,67 @@ namespace DefaultNamespace
             _completedAchievements.Add(achievement.name);
         }
     }
-    
-    
-    
+
+
+    // +++sakut
+    // если довести принцип до идеала, то получим антипринцип SRP, куча классов и ничего не понятно, откуда, что и куда идет
+    // пример нарушения SRP - GameManager - класс который пытается сделать все
+
+    public class GameManager : MonoBehaviour
+    {
+        // состояние ресурсов
+        private int _money;
+        private int _health;
+
+        // спаунер
+        private int _enemyCount;
+        private Transform _spawnPoint;
+        private float _spawnTimer;
+    }
+
+    // разбиваем
+
+    public class EnemySpawner : MonoBehaviour
+    {
+        // спаунер
+        private int _enemyCount;
+        private Transform _spawnPoint;
+        private float _spawnTimer;
+    }
+
+    public class Player3 : MonoBehaviour
+    {
+        // состояние ресурсов
+        private int _money;
+        private int _health;
+    }
+
+    // при добавлении новых задач в Player3 
+    public class Player4 : MonoBehaviour
+    {
+        // состояние ресурсов
+        private int _money;
+        private int _health;
+
+        private List<Good> _items;
+        private List<float> _cooldowns;
+    }
+
+    internal class Good
+    {
+    }
+
+    // выделяем и добавляем новый класс
+    public class Inventory : MonoBehaviour
+    {
+        private List<Good> _items;
+        private List<float> _cooldowns;
+    }
+
+    // декомпозиция происходит при расширении системы
+
+    // +++sakut
+
 
     // OCP Принцип открытости закрытости
     
