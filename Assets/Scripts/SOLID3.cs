@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using UnityEngine.Events;
 
 namespace DefaultNamespace
 {
-    public class SOLID3
+    public class SOLID3 : MonoBehaviour
     {
     }
 
@@ -286,6 +288,193 @@ namespace DefaultNamespace
 
 
     // OCP Принцип открытости закрытости
+
+    // класс закрыт для модификации, но открыт для расширений (стараться не менять базовую логику которая работает)
+    // можем сломать логику наследников или их части
+    // принцип реализуется через Абстрактные классы, интерфейсы, дженерики.
+
+    //Если сущности имеют схожую базовую логику, но отличаются в реализации, то общую логику в абстрактный класс.
+    //Если нет общей логики или ее мало, подойдет интерфейс.
+
+    // OCPExample
+
+    //абстрактный класс пример апгрейд персонажа(улучшаем разные параметры - урон, здоровье и т.д.)
+
+
+    public abstract class Upgrade
+    {
+        //[ReadOnly][ShowInInpector] 
+        public abstract string CurrentStats { get; }
+        public abstract string NextImprovement { get; }
+        protected abstract void ProcessLevelUp(int level);
+    }
+
+
+    public sealed class DamageUpgrade : Upgrade // , IGameInitElement
+    {
+        public override string CurrentStats { get; } // return this.config.damageTable.GetDamage.ToString();
+        public override string NextImprovement { get; } // return this.config.damageTable.DamageStep.ToString();
+
+        protected override void ProcessLevelUp(int level)
+        {
+             //this.SetDamage(level)
+        }
+    }
+    //абстрактный класс пример апгрейд персонажа(улучшаем разные параметры - урон, здоровье и т.д.)
+
+
+    //пример интерфейсов - вариант первоначальной инициализации игры
+
+    public interface ILoadingTask
+    {
+        void Do(Action<LoadingResult> callback);
+    }
+
+    public readonly struct LoadingResult
+    {
+        //
+    }
+
+    public sealed class LoadingTask_InitializePurchasing : ILoadingTask
+    {
+        public void Do(Action<LoadingResult> callback)
+        {
+            // PurchasingInitializer.Init(result =>
+            // {
+            //     if (result.isSuccess)
+            //     {
+            //         callback?.Invoke(LoadingResult.Success());
+            //     }
+            //     else
+            //     {
+            //         callback?.Invoke(LoadingResult.Fail(result.error.ToString()));
+            //     }
+            // });
+        }
+    }
+
+    public static class PurchasingInitializer
+    {
+        //
+    }
+
+    //пример интерфейсов - вариант первоначальной инициализации игры
+
+    // OCPExample Враг может переходить к разным состояниям 
+    // наследники переопределяют абстрактную логику Patrol DoAttack DoIdle - разные враги
+
+    public abstract class Enemy : MonoBehaviour
+    {
+        private WarriorState _currentState;
+        private Dictionary<WarriorState, Action> _stateDelegates;
+
+        public void Init()
+        {
+            _stateDelegates = new()
+            {
+                {WarriorState.Idle, DoIdle},
+                {WarriorState.Attack, DoAttack},
+                {WarriorState.Patrol, DoPatrol},
+            };
+        }
+
+        public void OnStateChanged()
+        {
+            _stateDelegates[_currentState].Invoke();
+        }
+
+        protected abstract void DoPatrol();
+        protected abstract void DoAttack();
+        protected abstract void DoIdle();
+    }
+
+    internal class WarriorState
+    {
+        public static WarriorState Idle { get; set; }
+        public static WarriorState Attack { get; set; }
+        public static WarriorState Patrol { get; set; }
+    }
+
+    // нарушить принцип в примере 
+    // сделать виртуальным OnStateChanged() и переопределить, 
+    // как пример подкупленный враг патрулирует в дальнейшем может поломать логику
+
+    public abstract class Enemy2 : MonoBehaviour
+    {
+        private WarriorState _currentState;
+        private Dictionary<WarriorState, Action> _stateDelegates;
+
+        protected virtual void OnStateChanged2()
+        {
+            _stateDelegates[_currentState].Invoke();
+        }
+
+        protected abstract void DoPatrol();
+        protected abstract void DoAttack();
+        protected abstract void DoIdle();
+    }
+
+    public class MeleeEnemy : Enemy2
+    {
+        private bool _isBribed;
+
+        protected override void OnStateChanged2()
+        {
+            if (_isBribed)
+            {
+                DoPatrol();
+            }
+            else
+            {
+                base.OnStateChanged2();
+            }
+        }
+
+        protected override void DoPatrol()
+        {
+        }
+
+        protected override void DoAttack()
+        {
+        }
+
+        protected override void DoIdle()
+        {
+        }
+    }
+    
+    // +++sakut
+    //при появлении новых требований нельзя будет изменить базовый класс,
+    //потому что это изменение отразится на работе других классов
+    
+    // пример если мы резко затормозили занчит мы с чем то столнулись. (можно проверить через колизии)
+    [RequireComponent(typeof(Rigidbody))] // должен присутствовать Rigidbody
+    public class Player5 : MonoBehaviour
+    {
+        //открываем код для расширения через события
+        public UnityEvent OnFalled; // если игрок упал на объекте в события добавляется например воспроизведение звука
+        
+        
+        private Vector3 _lastVelocity;
+        private Rigidbody _rigidbody;
+
+        private void Start()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
+
+        private void FixedUpdate()
+        {
+            if ((_lastVelocity - _rigidbody.velocity).magnitude > 5) // резко поменялась скорость
+            {
+                OnFalled?.Invoke();
+            }
+
+            _lastVelocity = _rigidbody.velocity;
+        }
+    }
+    // +++sakut
     
     
+
 }
