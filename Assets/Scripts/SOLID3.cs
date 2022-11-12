@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
@@ -700,8 +702,93 @@ namespace DefaultNamespace
     
     
     // +++sakut
+    // базовый тип служит неким контрактом, который производный тип обязан соблюдать
+    // +++sakut
     
     
+    // ISP Принцип разделения интерфейсов
+    // сущности не должны зависеть от методов которые они не используют. Большие интерфейсы лучше разделять на мелкие.
+
+    public interface IBadInterface
+    {
+        public void Move();
+        public void Jump();
+        public void Craft();
+        public void Run();
+    }
+    // кто-то может не уметь прыгать
+    
+    public interface IMoveComponent
+    {
+        public void Move();
+    }
+
+    public interface IJumpComponent
+    {
+        public void Jump();
+    }
+    
+    public interface ICraftComponent
+    {
+        public void Craft();
+    }
+    
+    public interface IRunComponent
+    {
+        public void Run();
+    }
+
+    // DIP Принцип инверсии зависимостей
+    
+    // Модули верхних уровней не должны зависеть от модулей нижних уровней
+    // модули обоих уровней должны зависеть от абстракций
+    // Абстракции НЕ должны зависеть от деталей, детали должны зависеть от абстракций
+    
+    // утюг <=> электростанция
+    // утюг получает от электростанции энергию, как сделать лучше?
+    // выделить интерфейсы Электроприбор <=> источник энергии  // абстрактный уровень
+    //                     Утюг                Электростанция  // конкретный уровень
+    
+    // таким образом и утюг и электростанции могут поменяться
     
     
+    // DIP Example 
+    
+    // UISystem обращается к объект StatusView при этом не зная экземпляром какого наследника объект является,
+    // а уже наследники реализуют базовый метод по-разному
+    
+    public abstract class StatusView : MonoBehaviour
+    {
+        public class Data
+        {
+            public float progress;
+            public Sprite icon;
+            public int amount;
+        }
+
+        public abstract void SetData(Data data);
+    }
+
+    public class StatusViewOnlyText : StatusView
+    {
+        [SerializeField] private TextMeshProUGUI _statusText;
+        public override void SetData(Data data)
+        {
+            _statusText.text = data.amount.ToString();
+        }
+    }
+    
+    public class StatusViewTextAndBar : StatusView
+    {
+        [SerializeField] private TextMeshProUGUI _statusText;
+        [SerializeField] private Slider _slider;
+        public override void SetData(Data data)
+        {
+            _statusText.text = data.amount.ToString();
+            _slider.value = data.progress;
+        }
+    }
+    
+
+
 }
