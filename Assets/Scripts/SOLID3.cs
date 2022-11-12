@@ -317,7 +317,7 @@ namespace DefaultNamespace
 
         protected override void ProcessLevelUp(int level)
         {
-             //this.SetDamage(level)
+            //this.SetDamage(level)
         }
     }
     //абстрактный класс пример апгрейд персонажа(улучшаем разные параметры - урон, здоровье и т.д.)
@@ -442,19 +442,19 @@ namespace DefaultNamespace
         {
         }
     }
-    
+
     // +++sakut
     //при появлении новых требований нельзя будет изменить базовый класс,
     //потому что это изменение отразится на работе других классов
-    
+
     // пример если мы резко затормозили занчит мы с чем то столнулись. (можно проверить через колизии)
     [RequireComponent(typeof(Rigidbody))] // должен присутствовать Rigidbody
     public class Player5 : MonoBehaviour
     {
         //открываем код для расширения через события
         public UnityEvent OnFalled; // если игрок упал на объекте в события добавляется например воспроизведение звука
-        
-        
+
+
         private Vector3 _lastVelocity;
         private Rigidbody _rigidbody;
 
@@ -474,7 +474,117 @@ namespace DefaultNamespace
         }
     }
     // +++sakut
-    
-    
 
+
+    // LSP Принцип подстановки Барбары Лисков
+
+    // Если класс пользуется классом Animal, то он должен пользоваться и наследниками Dog Cat.
+    // Без разницы базовый класс или наследник.
+
+    // LSPExample
+
+    // нарушение принципа 1
+    // проверили что towerbase.price > _playerMoney денег хватает списали деньги, а башня уже максимального уровня
+    // изменили логику работы метода UpgradeTower()
+
+    public class TowerManager
+    {
+        private int _playerMoney;
+
+        public bool TryUpgradeTower(TowerBase towerbase)
+        {
+            if (towerbase.price > _playerMoney)
+            {
+                return false;
+            }
+
+            _playerMoney -= towerbase.price;
+            towerbase.UpgradeTower();
+            return true;
+        }
+    }
+
+    public abstract class TowerBase
+    {
+        public int price;
+        public abstract void UpgradeTower();
+    }
+
+    public class MageTower : TowerBase
+    {
+        private int _currentLevel;
+        private int _maxLevel;
+
+        public override void UpgradeTower()
+        {
+            if (_currentLevel < _maxLevel)
+            {
+                _currentLevel++;
+            }
+        }
+    }
+    
+    // исправление
+    // если уровень прокачки есть у всех башень то выносится в TowerBase
+    // если уровень прокачки только у MageTower, (TowerManager не должен
+    // знать детали реализации MageTower (время, количество врагов, уровень и т.д.))  
+    // есть вариант вынести в абстрактную проверку CanUpgrade
+    
+    //вариант исправления1
+    
+    public class TowerManager2
+    {
+        private int _playerMoney;
+
+        public bool TryUpgradeTower(TowerBase2 towerbase)
+        {
+            if (towerbase.price > _playerMoney)
+            {
+                return false;
+            }
+
+            return towerbase.TryUpgradeTower();
+        }
+    }
+
+    public abstract class TowerBase2
+    {
+        public int price;
+        private int _currentLevel;
+        private int _maxLevel;
+        protected float Damage;
+        
+
+        public bool TryUpgradeTower()
+        {
+            if (_currentLevel >= _maxLevel)
+            {
+                return false;
+            }
+            
+            _currentLevel++;
+            UpgradeTower();
+            return true;
+        }
+        
+        protected abstract void UpgradeTower();
+    }
+
+    public class MageTower2 : TowerBase2
+    {
+        protected override void UpgradeTower()
+        {
+            Damage += 10;
+        }
+    }
+    
+    // отнимание денег на другом уровне если if (TryUpgradeTower(towerbase)) _playerMoney -=towerbase.price;
+    // отнимаем деньги если получается проапгредить
+    
+    
+    // нарушение принципа 2
+    
+    
+    
+    
 }
