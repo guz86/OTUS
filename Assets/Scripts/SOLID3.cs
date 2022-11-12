@@ -530,7 +530,7 @@ namespace DefaultNamespace
     // знать детали реализации MageTower (время, количество врагов, уровень и т.д.))  
     // есть вариант вынести в абстрактную проверку CanUpgrade
     
-    //вариант исправления1
+    //вариант исправления
     
     public class TowerManager2
     {
@@ -583,6 +583,123 @@ namespace DefaultNamespace
     
     
     // нарушение принципа 2
+    // два наследника и один из наследников не атакует, т.к. мы обязаны реализовать
+    // его мы выкидываем исключение - плохой стиль
+    
+    public class TowerManager3 : MonoBehaviour
+    {
+        private int _playerMoney;
+
+        private List<TowerBase3> _towers = new();
+
+        private void Update()
+        {
+            foreach (var towerBase in _towers)
+            {
+                towerBase.Attack();
+                towerBase.Support();
+            }
+        }
+    }
+
+    public abstract class TowerBase3
+    {
+        public int price;
+        public abstract void Attack();
+        public abstract void Support();
+    }
+
+    public class MageTower3 : TowerBase3
+    {
+        public override void Attack()
+        {
+            // DealDamage(5);
+        }
+
+        public override void Support()
+        {
+            // AddShield(10);
+        }
+    }
+    public class BoostTower3 : TowerBase3
+    {
+        public override void Attack()
+        {
+            // throw new NotImplementedException(); в оригинале не закоммичена
+        }
+
+        public override void Support()
+        {
+            // BoostAttckSpeed(10);
+        }
+    }
+    
+    
+    // вариант исправления
+    // через интерфейсы
+    
+    public class TowerManager4 : MonoBehaviour
+    {
+        private int _playerMoney;
+        private List<TowerBase4> _towers = new();
+
+        // лучше избегать писать код в Update() лучше отдельно сделать массивы с AttackTowers и SupportTowers
+        // и в нужный момент проходиться по этим спискам и не делать проверку
+        
+        private void Update()
+        {
+            foreach (var towerBase in _towers)
+            {
+                // безопасное приведение 
+                if (towerBase is IAttackTower attackTower)
+                {
+                    attackTower.Attack();
+                }
+                if (towerBase is ISupportTower supportTower)
+                {
+                    supportTower.Support();
+                }
+            }
+        }
+    }
+
+    public interface IAttackTower
+    {
+        public void Attack();
+    }
+    
+    public interface ISupportTower
+    {
+        public void Support();
+    }
+
+    public abstract class TowerBase4
+    {
+        public int price;
+    }
+
+    public class MageTower4 : TowerBase4, IAttackTower, ISupportTower
+    {
+        public void Attack()
+        {
+            // DealDamage(5);
+        }
+
+        public void Support()
+        {
+            // AddShield(10);
+        }
+    }
+    public class BoostTower4 : TowerBase4, ISupportTower
+    {
+        public void Support()
+        {
+            // BoostAttckSpeed(10);
+        }
+    }
+    
+    
+    // +++sakut
     
     
     
