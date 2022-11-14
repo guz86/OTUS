@@ -37,11 +37,15 @@
     // По вызову Call() механика будет уменьшать здоровье
     
     // механика смерти по событию  -- Death + DeathMechanics.cs, EventReceiver.cs
+    
     // К объекту Death добавляем новую механику DeathMechanics
     // где будем подписывать
     // из HitPoints - IntBehaviour - OnValueChanged наш метод OnHitPointsChanged 
     // OnHitPointsChanged будет выполнять проверку Value и вызывать при хп 0 Call() в ресивере 
 
+    // механика атаки c кулдауном
+    
+    // делаем противника
 
 
 
