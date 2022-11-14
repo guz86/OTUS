@@ -46,8 +46,27 @@
     // механика атаки c кулдауном
     
     // делаем противника и добавляем таймер TimerBehavior на объект Attack
-    // теперь нужен примитив с событием
-
+    // теперь нужен примитив с событием - EventReceiver добавляем на объект Attack 
+    // механика которая свяжет примитивы - AttackMechanics
+    //  обычно логика нанесения урона - от синего к красному - из атаки синего обратиться к TakeDamage красного
+    // TEMP!!! временный варинат через Enemy.cs который свяжет логику нанесения урона
+    // на Enemy(Red) добавляем Enemy.cs и указываем ссылку на обьект TakeDamage в _takeDamageReceiver
+    // в AttackMechanics нам понадобится ссылка на Enemy
+    // и в AttackMechanics логику нанесения урона TakeDamage() который отнимет здоровье
+    // на синего игрока добавляем d Attack - AttackMechanics
+    // -AttackMechanics +ресивер на событие из объекта
+    // -AttackMechanics +таймер с объекта
+    // -AttackMechanics + в Enemy наш красный куб
+    
+    //кастамизируем атаку и получение урона
+    // - передаем значение урона в TakeDamageMechanics
+    // - передаем значение урона  в Enemy
+    // добавим еще один примитив IntEventReceiver.cs c Action<int> событием
+    // в TakeDamageMechanics будем добавлять IntEventReceiver вместо EventReceiver
+    // в Enemy будем добавлять IntEventReceiver вместо EventReceiver
+    // на объект TakeDamage ставим IntEventReceiver
+    // в AttackMechanics нужно передавать значение урона - 
+    // в объект Attack добавляем объект Damage +  нему IntBehaviour 3
 
 
 

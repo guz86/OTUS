@@ -4,7 +4,8 @@ namespace Lessons.Architecture.Mechanics
 {
     public class TakeDamageMechanics : MonoBehaviour
     {
-        [SerializeField] private EventReceiver _takeDamageReceiver;
+        //[SerializeField] private EventReceiver _takeDamageReceiver;
+        [SerializeField] private IntEventReceiver _takeDamageReceiver;
         [SerializeField] private IntBehaviour _hitPoints;
 
         private void OnEnable()
@@ -17,9 +18,9 @@ namespace Lessons.Architecture.Mechanics
             this._takeDamageReceiver.OnEvent -= this.OnDamageTaken;
         }
 
-        private void OnDamageTaken()
+        private void OnDamageTaken(int damage)
         {
-            const int damage = 1;
+            //const int damage = 1;
             this._hitPoints.Value -= damage;
         }
     }
