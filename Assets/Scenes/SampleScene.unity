@@ -778,6 +778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1505337125}
   - component: {fileID: 1505337126}
+  - component: {fileID: 1505337127}
   m_Layer: 0
   m_Name: TakeDamage
   m_TagString: Untagged
@@ -812,6 +813,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d2adf30e5947cb994cf7f56bb8a199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1505337127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505337124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3929adad889242288c4295cf22128380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _takeDamageReceiver: {fileID: 1505337126}
+  _hitPoints: {fileID: 152386221}
 --- !u!1 &1953993795
 GameObject:
   m_ObjectHideFlags: 0
