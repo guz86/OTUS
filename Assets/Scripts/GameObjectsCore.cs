@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace
+﻿namespace Lessons
 {
     public class GameObjectsCore
     {
@@ -21,21 +21,30 @@
     // событие event - гибель персонажа, выстрел из оружия
     // коллизия collider - персонаж входит в зону тригера, столновение объекта 
     
+    
+    //механика получения урона это какое-то событие
+    
     // здоровье это некий элемент с int
     // нужен элемент который будет хранить числа
     // IntBehaviour добавляется к HitPoints Объекту
-    
-    //механика получения урона это какое то событие
     // EventReceiver - некий триггер с помощью которого можем вызывать событие
     // добавляем на TakeDamage Объект
-    
     // хотим вызывать метод из EventReceiver в инспекторе
     // для этого есть плагин OdinInspector из кода [Button] добавлет кнопку
-    // соединяем два элемента механикой  через Observer
+    // соединяем два элемента механикой TakeDamageMechanics через Observer
+    // TakeDamageMechanics с EventReceiver будет висеть на объекте TakeDamage
+    // в TakeDamage передаем EventReceiver (TakeDamage) и IntBehaviour (HitPoints) - связываем
+    // По вызову Call() механика будет уменьшать здоровье
     
-    
-    
-    
-    
-    
+    // механика смерти по событию  -- Death + DeathMechanics.cs, EventReceiver.cs
+    // К объекту Death добавляем новую механику DeathMechanics
+    // где будем подписывать
+    // из HitPoints - IntBehaviour - OnValueChanged наш метод OnHitPointsChanged 
+    // OnHitPointsChanged будет выполнять проверку Value и вызывать при хп 0 Call() в ресивере 
+
+
+
+
+
+
 }

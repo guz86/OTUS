@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace DefaultNamespace
+namespace Lessons
 {
     public class SOLID3 : MonoBehaviour
     {
