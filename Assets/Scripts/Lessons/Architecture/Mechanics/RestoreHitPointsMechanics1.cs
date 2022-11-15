@@ -2,23 +2,23 @@
 
 namespace Lessons.Architecture.Mechanics
 {
-    public class RestoreHitPointsMechanics : MonoBehaviour
+    public class RestoreHitPointsMechanics1 : MonoBehaviour
     {
-        [SerializeField] private IntEventReceiver _takeDamageReceiver;
-        [SerializeField] private IntBehaviour _hitPoints;
-        [SerializeField] private TimerBehavior _delay; // задержка перед запуском
-        [SerializeField] private PeriodBehavior _restorePeriod; // восстановление хп
+        [SerializeField] private IntEventReceiver1 takeDamageReceiver1;
+        [SerializeField] private IntBehaviour1 _hitPoints;
+        [SerializeField] private TimerBehavior1 _delay; // задержка перед запуском
+        [SerializeField] private PeriodBehavior1 _restorePeriod; // восстановление хп
 
         private void OnEnable()
         {
-            _takeDamageReceiver.OnEvent += OnDamageTaken;
+            takeDamageReceiver1.OnEvent += OnDamageTaken;
             _delay.OnEnded += OnDelayEnded;
             _restorePeriod.OnEvent += OnRestoreHitPoints;
         }
 
         private void OnDisable()
         {
-            _takeDamageReceiver.OnEvent -= OnDamageTaken;
+            takeDamageReceiver1.OnEvent -= OnDamageTaken;
             _delay.OnEnded -= OnDelayEnded;
             _restorePeriod.OnEvent -= OnRestoreHitPoints;
         }

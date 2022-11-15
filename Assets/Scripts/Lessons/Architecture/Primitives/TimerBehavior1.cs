@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Lessons.Architecture.Mechanics
 {
-    public sealed class TimerBehavior : MonoBehaviour
+    public sealed class TimerBehavior1 : MonoBehaviour
     {
         public event Action OnEnded;
 
