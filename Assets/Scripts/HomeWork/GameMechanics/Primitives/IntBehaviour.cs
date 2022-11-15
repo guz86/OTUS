@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Lessons.Architecture.Mechanics
+namespace HomeWork.GameMechanics.Mechanics
 {
     public sealed class IntBehaviour : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Lessons.Architecture.Mechanics
+namespace HomeWork.GameMechanics.Mechanics
 {
     public class TakeDamageMechanics : MonoBehaviour
     {

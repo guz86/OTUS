@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace HomeWork.GameMechanics.Mechanics
 {
-    public class IntEventReceiver : MonoBehaviour
+    public class VectorEventReceiver : MonoBehaviour
     {
-        public Action<int> OnEvent;
+        public Action<Vector3> OnEvent;
 
         [Button]
-        public void Call(int value)
+        public void Call(Vector3 value)
         {
             //Debug.Log($"Event {name} received");
             this.OnEvent?.Invoke(value);
