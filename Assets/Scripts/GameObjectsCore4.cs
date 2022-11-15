@@ -1,6 +1,6 @@
 ﻿namespace Lessons
 {
-    public class GameObjectsCore
+    public class GameObjectsCore4
     {
         
     }
@@ -68,6 +68,9 @@
     // в AttackMechanics нужно передавать значение урона - 
     // в объект Attack добавляем объект Damage +  нему IntBehaviour 3
 
+    // механика восстановления здоровья
+    
+    
 
 
 
