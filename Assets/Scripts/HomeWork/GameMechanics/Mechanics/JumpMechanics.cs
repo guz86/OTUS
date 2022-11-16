@@ -7,10 +7,12 @@ namespace HomeWork.GameMechanics.Mechanics
     {
         [SerializeField] private EventReceiver _eventReceiver;
         [SerializeField] private GameObject _visualObject;
-        [SerializeField] private float _velocity;
-        [SerializeField] private float _jumpPower;
-        [SerializeField] private bool _isJump;
+        [SerializeField] private AnimationCurve _yAnimation;
+        [SerializeField] private float _height = 5f;
+        [SerializeField] private float duration = 1f;
 
+        private Coroutine _coroutineJump;
+        
         private void OnEnable()
         {
             _eventReceiver.OnEvent += OnJump;
@@ -24,37 +26,28 @@ namespace HomeWork.GameMechanics.Mechanics
 
         private void OnJump()
         {
-            if (!_isJump)
+            if (_coroutineJump == null)
             {
-                StartCoroutine(JumpRoutine()); 
-                _isJump = false;
+                _coroutineJump = StartCoroutine(JumpRoutine()); 
             }
         }
 
         private IEnumerator JumpRoutine()
         {
-            
-            while (_jumpPower <= _velocity && !_isJump)
-            {
-                yield return null;
-                _jumpPower += Time.deltaTime;
-                _visualObject.transform.Translate(new Vector3(0, _jumpPower * 2, 0));
-            }
+            var position = _visualObject.transform.position;
+            var startPosition = new Vector3(position.x, 0.5f , position.z);
+            float progress = 0;
+            float time = 0;
 
-            _jumpPower = _velocity;
-            
-            _isJump = true;
-            
-            while (_jumpPower >= 0)
+            while (progress < 1)
             {
+                time += Time.deltaTime;
+                progress = time / duration;
+                _visualObject.transform.position = new Vector3(0,_yAnimation.Evaluate(progress) * _height,0) + startPosition;
                 yield return null;
-                _jumpPower -= Time.deltaTime;
-
-                    if (_jumpPower < 0) _jumpPower = 0;
-                
-                _visualObject.transform.Translate(new Vector3(0, -_jumpPower * 2, 0));
             }
             
+            _coroutineJump = null;
         }
         
         
