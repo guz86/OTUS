@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Lessons.Architecture.Mechanics
 {
-    public sealed class IntBehaviour1 : MonoBehaviour
+    public sealed class IntBehaviour : MonoBehaviour
     {
         [SerializeField] private int _value;
 

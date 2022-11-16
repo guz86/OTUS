@@ -2,20 +2,20 @@
 
 namespace Lessons.Architecture.Mechanics
 {
-    public class TakeDamageMechanics1 : MonoBehaviour
+    public class TakeDamageMechanics : MonoBehaviour
     {
         //[SerializeField] private EventReceiver _takeDamageReceiver;
-        [SerializeField] private IntEventReceiver1 takeDamageReceiver1;
-        [SerializeField] private IntBehaviour1 _hitPoints;
+        [SerializeField] private IntEventReceiver takeDamageReceiver;
+        [SerializeField] private IntBehaviour _hitPoints;
 
         private void OnEnable()
         {
-            this.takeDamageReceiver1.OnEvent += this.OnDamageTaken;
+            this.takeDamageReceiver.OnEvent += this.OnDamageTaken;
         }
 
         private void OnDisable()
         {
-            this.takeDamageReceiver1.OnEvent -= this.OnDamageTaken;
+            this.takeDamageReceiver.OnEvent -= this.OnDamageTaken;
         }
 
         private void OnDamageTaken(int damage)

@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Lessons.Architecture.Mechanics
 {
     // работает бесконечно
-    public class PeriodBehavior1 : MonoBehaviour
+    public class PeriodBehavior : MonoBehaviour
     {
         public event Action OnEvent;
 

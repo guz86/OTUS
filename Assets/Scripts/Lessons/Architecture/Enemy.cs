@@ -6,11 +6,11 @@ namespace Lessons.Architecture.Mechanics
     public sealed class Enemy : MonoBehaviour
     {
 
-        [SerializeField] private IntEventReceiver1 takeDamageReceiver1;
+        [SerializeField] private IntEventReceiver takeDamageReceiver;
         
         public void TakeDamage(int damage)
         {
-            this.takeDamageReceiver1.Call(damage);
+            this.takeDamageReceiver.Call(damage);
         }
     }
 }

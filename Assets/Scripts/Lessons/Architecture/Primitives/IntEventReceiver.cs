@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Lessons.Architecture.Mechanics
 {
-    public class IntEventReceiver1 : MonoBehaviour
+    public class IntEventReceiver : MonoBehaviour
     {
         public Action<int> OnEvent;
 
