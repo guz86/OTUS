@@ -6,6 +6,8 @@ namespace HomeWork.GameMechanics.Mechanics
     {
         [SerializeField] private IntBehaviour _hitPoints;
         [SerializeField] private EventReceiver _deathReceiver;
+        [SerializeField] private GameObject _gameobject;
+        
 
         private void OnEnable()
         {
@@ -22,6 +24,7 @@ namespace HomeWork.GameMechanics.Mechanics
             if (newHitPoints <= 0)
             {
                 this._deathReceiver.Call();
+                _gameobject.SetActive(false);
             }
         }
     }

@@ -2,10 +2,15 @@
 
 namespace HomeWork.GameMechanics.Mechanics
 {
-    public class AIMovement : MonoBehaviour
+    public class AIMovementMechanics : MonoBehaviour
     {
         [SerializeField] private RandomMovementMechanics _randomMovementMechanics;
         [SerializeField] private TimerBehavior _timer;
+
+        private void Start()
+        {
+            _timer.Play();
+        }
 
         private void Update()
         {

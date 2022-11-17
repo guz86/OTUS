@@ -8,6 +8,13 @@ namespace HomeWork.GameMechanics.Mechanics
         [SerializeField] private EventReceiver _eventReceiver;
         [SerializeField] private TimerBehavior _timer;
 
+        
+        private void Start()
+        {
+            _timer.Play();
+        }
+
+        
         private void Update()
         {
             if (!_timer.IsPlaying)
