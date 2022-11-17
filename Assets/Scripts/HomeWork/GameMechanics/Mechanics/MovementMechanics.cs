@@ -7,7 +7,7 @@ namespace HomeWork.GameMechanics.Mechanics
     {
         [SerializeField] private VectorEventReceiver _moveReceiver;
         [SerializeField] private GameObject _visualObject;
-        [SerializeField] private float _speed; //15f
+        [SerializeField] private IntBehaviour _MovementSpeed; //15f
         private Coroutine _coroutineMove;
 
         private void OnEnable()
@@ -36,7 +36,7 @@ namespace HomeWork.GameMechanics.Mechanics
             while (progress < 1)
             {
                 time += Time.deltaTime;
-                progress = time / distance * _speed;
+                progress = time / distance * _MovementSpeed.Value;
                 var targetX = targetPosition.x - startPosition.x;
                 var targetZ = targetPosition.z - startPosition.z;
                 var target = new Vector3((targetX) * progress, 0f, (targetZ) * progress);

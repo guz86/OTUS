@@ -8,8 +8,8 @@ namespace HomeWork.GameMechanics.Mechanics
         [SerializeField] private EventReceiver _eventReceiver;
         [SerializeField] private GameObject _visualObject;
         [SerializeField] private AnimationCurve _yAnimation;
-        [SerializeField] private float _height = 5f;
-        [SerializeField] private float duration = 1f;
+        [SerializeField] private IntBehaviour _jumpHeight;
+        [SerializeField] private IntBehaviour _jumpDuration;
 
         private Coroutine _coroutineJump;
         
@@ -42,8 +42,8 @@ namespace HomeWork.GameMechanics.Mechanics
             while (progress < 1)
             {
                 time += Time.deltaTime;
-                progress = time / duration;
-                _visualObject.transform.position = new Vector3(0,_yAnimation.Evaluate(progress) * _height,0) + startPosition;
+                progress = time / _jumpDuration.Value;
+                _visualObject.transform.position = new Vector3(0,_yAnimation.Evaluate(progress) * _jumpHeight.Value,0) + startPosition;
                 yield return null;
             }
             
