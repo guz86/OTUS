@@ -4,7 +4,6 @@ namespace HomeWork.GameMechanics.Mechanics
 {
     public class TakeDamageMechanics : MonoBehaviour
     {
-        //[SerializeField] private EventReceiver _takeDamageReceiver;
         [SerializeField] private IntEventReceiver _takeDamageReceiver;
         [SerializeField] private IntBehaviour _hitPoints;
 
