@@ -7,6 +7,7 @@ namespace HomeWork.GameMechanics.Mechanics
         [SerializeField] private EventReceiverCollision _shootbulletReceiver;
         [SerializeField] private IntEventReceiver _takeDamageReceiver;
         [SerializeField] private IntBehaviour _damage;
+        [SerializeField] private string _tag; //"Enemy"
 
 
         private void OnEnable()
@@ -22,7 +23,7 @@ namespace HomeWork.GameMechanics.Mechanics
 
         private void OnShoot(Collision obj)
         {
-            if (obj.gameObject.CompareTag("Enemy"))
+            if (obj.gameObject.CompareTag(_tag))
             {
                 _takeDamageReceiver.Call(_damage.Value);
                 Destroy(obj.gameObject);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HomeWork.GameMechanics.Mechanics
 {
-    public class IntEventReceiver : MonoBehaviour
+    public sealed class IntEventReceiver : MonoBehaviour
     {
         public Action<int> OnEvent;
 

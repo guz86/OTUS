@@ -4,7 +4,7 @@ using UnityEngine;
 namespace HomeWork.GameMechanics.Mechanics
 {
     [DisallowMultipleComponent]
-    public class EventReceiverCollision : MonoBehaviour
+    public sealed class EventReceiverCollision : MonoBehaviour
     {
         
         public event Action<Collision> OnCollisionEntered;

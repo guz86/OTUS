@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HomeWork.GameMechanics.Mechanics
 {
-    public class VectorEventReceiver : MonoBehaviour
+    public sealed class VectorEventReceiver : MonoBehaviour
     {
         public Action<Vector3> OnEvent;
 

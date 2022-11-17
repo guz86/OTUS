@@ -22,7 +22,7 @@ namespace HomeWork.GameMechanics.Mechanics
             _attackReceiver.OnEvent -= OnShoot;
         }
 
-        private void OnShoot()
+        public void OnShoot()
         {
             if (_cooldown.IsPlaying)
             {

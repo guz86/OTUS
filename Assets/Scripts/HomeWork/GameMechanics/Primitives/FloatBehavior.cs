@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HomeWork.GameMechanics.Mechanics
 {
-    public class FloatBehavior : MonoBehaviour
+    public sealed class FloatBehavior : MonoBehaviour
     {
         [SerializeField] private float _value;
 
