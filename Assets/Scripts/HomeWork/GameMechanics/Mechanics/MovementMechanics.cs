@@ -20,7 +20,7 @@ namespace HomeWork.GameMechanics.Mechanics
             _moveReceiver.OnEvent -= OnMove;
         }
 
-        public void OnMove(Vector3 position)
+        private void OnMove(Vector3 position)
         {
             if (_coroutineMove == null) _coroutineMove = StartCoroutine(Move(position));
         }

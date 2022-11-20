@@ -4,7 +4,7 @@ namespace HomeWork.GameMechanics.Mechanics
 {
     public class RandomMovementMechanics : MonoBehaviour
     {
-        [SerializeField] private MovementMechanics _movement;
+        [SerializeField] private VectorEventReceiver _movementReceiver;
         [SerializeField] private GameObject _visualObject;
         [SerializeField] private EventReceiver _eventReceiver;
         [SerializeField] private IntBehaviour _pointPositionXOne; //-5
@@ -30,7 +30,7 @@ namespace HomeWork.GameMechanics.Mechanics
                 objectPosition.y,
                 objectPosition.z);
 
-            _movement.OnMove(randomPosition);
+            _movementReceiver.Call(randomPosition);
         }
     }
 }
