@@ -1,6 +1,5 @@
-# homework_game_mechanics
+# ДЗ в ветке homework_game_mechanics
 
-ДЗ в ветке homework_game_mechanics 
 
 ДЗ в Assets/Scripts/HomeWork
 
