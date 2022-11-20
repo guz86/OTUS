@@ -8,6 +8,7 @@ namespace HomeWork.GameMechanics.Mechanics
         [SerializeField] private VectorEventReceiver _moveReceiver;
         [SerializeField] private TransformEngine _transformEngine;
         [SerializeField] private IntBehaviour _MovementSpeed; //15f
+
         private Coroutine _coroutineMove;
 
         private void OnEnable()
@@ -27,12 +28,11 @@ namespace HomeWork.GameMechanics.Mechanics
 
         private IEnumerator Move(Vector3 targetPosition)
         {
-            
-            var startPosition =_transformEngine.GetPosition();
+            var startPosition = _transformEngine.GetPosition();
 
             var distance = (targetPosition - startPosition).magnitude;
             var duration = distance / _MovementSpeed.Value;
-             
+
             float progress = 0;
             float currentTime = 0;
 
@@ -43,10 +43,9 @@ namespace HomeWork.GameMechanics.Mechanics
                 progress = Mathf.Clamp01(currentTime / duration);
 
                 targetPosition = new Vector3(targetPosition.x, 0f, targetPosition.z);
-                
+
                 var newPosition = Vector3.Lerp(startPosition, targetPosition, progress);
                 _transformEngine.SetPosition(newPosition);
-
             }
 
             _coroutineMove = null;
