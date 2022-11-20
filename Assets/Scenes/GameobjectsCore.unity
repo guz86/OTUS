@@ -883,7 +883,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1190921124}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &526248255
 MonoBehaviour:
@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackReceiver: {fileID: 661289214}
   _cooldown: {fileID: 661289215}
-  _shootBulletEngine: {fileID: 0}
+  _shootBulletEngine: {fileID: 1024277296}
 --- !u!114 &661289214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,7 +1085,7 @@ GameObject:
   - component: {fileID: 732282287}
   - component: {fileID: 732282286}
   m_Layer: 0
-  m_Name: AIMovement
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1098,13 +1098,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732282280}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1190921124}
-  m_RootOrder: 7
+  m_Father: {fileID: 1427929616}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &732282282
 MonoBehaviour:
@@ -1730,8 +1730,6 @@ Transform:
   - {fileID: 942962121}
   - {fileID: 1395787678}
   - {fileID: 539873784}
-  - {fileID: 732282281}
-  - {fileID: 1319366271}
   - {fileID: 2081956658}
   - {fileID: 526248254}
   m_Father: {fileID: 1760133154}
@@ -2032,7 +2030,7 @@ GameObject:
   - component: {fileID: 1319366273}
   - component: {fileID: 1319366272}
   m_Layer: 0
-  m_Name: AIShoot
+  m_Name: Shoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2045,13 +2043,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319366270}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1190921124}
-  m_RootOrder: 8
+  m_Father: {fileID: 1427929616}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1319366272
 MonoBehaviour:
@@ -2091,7 +2089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a0d3d5d25e74096b7b7d49fa7a15393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootReceiver: {fileID: 1395787681}
+  _enemy: {fileID: 1760133155}
   _timer: {fileID: 1319366273}
 --- !u!1 &1322249491
 GameObject:
@@ -2458,6 +2456,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 15
+--- !u!1 &1427929615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1427929616}
+  m_Layer: 0
+  m_Name: AI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1427929616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427929615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 732282281}
+  - {fileID: 1319366271}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1597395474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2746,6 +2777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1760133154}
+  - component: {fileID: 1760133155}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2770,6 +2802,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1760133155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760133153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623e876a6ea54997b5e5e2266061446a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shootReceiver: {fileID: 1395787681}
 --- !u!1 &1847796680
 GameObject:
   m_ObjectHideFlags: 0
@@ -3022,7 +3067,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1190921124}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2081956659
 MonoBehaviour:

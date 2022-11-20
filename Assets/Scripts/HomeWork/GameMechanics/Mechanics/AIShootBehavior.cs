@@ -2,9 +2,9 @@
 
 namespace HomeWork.GameMechanics.Mechanics
 {
-    public class AIShootMechanics : MonoBehaviour
+    public class AIShootBehavior : MonoBehaviour
     {
-        [SerializeField] private EventReceiver _shootReceiver;
+        [SerializeField] private Enemy _enemy;
         [SerializeField] private TimerBehavior _timer;
 
         
@@ -19,13 +19,13 @@ namespace HomeWork.GameMechanics.Mechanics
             {
                 _timer.ResetTime();
                 _timer.Play();
-                _shootReceiver.Call();
+                _enemy.Shoot();
             }
         }
 
         private void OnAIShoot()
         {
-            _shootReceiver.Call();
+            _enemy.Shoot();
         }
     }
 }
