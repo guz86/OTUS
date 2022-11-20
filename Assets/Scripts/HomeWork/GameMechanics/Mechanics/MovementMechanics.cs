@@ -6,7 +6,7 @@ namespace HomeWork.GameMechanics.Mechanics
     public class MovementMechanics : MonoBehaviour
     {
         [SerializeField] private VectorEventReceiver _moveReceiver;
-        [SerializeField] private GameObject _visualObject;
+        [SerializeField] private TransformEngine _transformEngine;
         [SerializeField] private IntBehaviour _MovementSpeed; //15f
         private Coroutine _coroutineMove;
 
@@ -28,7 +28,7 @@ namespace HomeWork.GameMechanics.Mechanics
         private IEnumerator Move(Vector3 targetPosition)
         {
             
-            var startPosition = _visualObject.transform.position;
+            var startPosition =_transformEngine.GetPosition();
 
             var distance = (targetPosition - startPosition).magnitude;
             var duration = distance / _MovementSpeed.Value;
@@ -44,8 +44,8 @@ namespace HomeWork.GameMechanics.Mechanics
 
                 targetPosition = new Vector3(targetPosition.x, 0.5f, targetPosition.z);
                 
-                _visualObject.transform.position = Vector3.Lerp(startPosition, targetPosition, progress);
-                
+                var newPosition = Vector3.Lerp(startPosition, targetPosition, progress);
+                _transformEngine.SetPosition(newPosition);
 
             }
 
