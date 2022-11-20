@@ -30,24 +30,23 @@ namespace HomeWork.GameMechanics.Mechanics
             
             var startPosition = _visualObject.transform.position;
 
-            // если позиция не меняется
-            if (targetPosition - startPosition == Vector3.zero) yield return null;
-            
+            var distance = (targetPosition - startPosition).magnitude;
+            var duration = distance / _MovementSpeed.Value;
+             
             float progress = 0;
             float currentTime = 0;
-            var distance = (targetPosition - startPosition).magnitude;
 
             while (progress < 1)
             {
                 yield return null;
                 currentTime += Time.deltaTime;
-                progress = currentTime * _MovementSpeed.Value / distance;
-                var targetX = targetPosition.x - startPosition.x;
-                var targetZ = targetPosition.z - startPosition.z;
-                var target = new Vector3((targetX) * progress, 0f, (targetZ) * progress);
+                progress = Mathf.Clamp01(currentTime / duration);
 
-                _visualObject.transform.position = target + startPosition;
+                targetPosition = new Vector3(targetPosition.x, 0.5f, targetPosition.z);
                 
+                _visualObject.transform.position = Vector3.Lerp(startPosition, targetPosition, progress);
+                
+
             }
 
             _coroutineMove = null;
