@@ -1113,7 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f172ddf6538c4a959f6a166cfe8dea04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movement: {fileID: 1342061671}
+  _movementReceiver: {fileID: 1342061672}
   _visualObject: {fileID: 161658522}
   _eventReceiver: {fileID: 732282282}
   _pointPositionXOne: {fileID: 732282287}
