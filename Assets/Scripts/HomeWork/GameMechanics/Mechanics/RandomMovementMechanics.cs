@@ -5,7 +5,7 @@ namespace HomeWork.GameMechanics.Mechanics
     public class RandomMovementMechanics : MonoBehaviour
     {
         [SerializeField] private VectorEventReceiver _movementReceiver;
-        [SerializeField] private GameObject _visualObject;
+        [SerializeField] private TransformEngine _transformEngine;
         [SerializeField] private EventReceiver _eventReceiver;
         [SerializeField] private IntBehaviour _pointPositionXOne; //-5
         [SerializeField] private IntBehaviour _pointPositionXTwo; //6
@@ -24,7 +24,7 @@ namespace HomeWork.GameMechanics.Mechanics
         // двигаться в случайное положение по Х
         public void OnMove()
         {
-            Vector3 objectPosition = _visualObject.transform.position;
+            Vector3 objectPosition = _transformEngine.GetPosition();
             Vector3 randomPosition = new Vector3(Random.Range(_pointPositionXOne.Value,
                     _pointPositionXTwo.Value),
                 objectPosition.y,

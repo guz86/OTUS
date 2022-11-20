@@ -4,8 +4,7 @@ namespace HomeWork.GameMechanics.Mechanics
 {
     public class AIShootMechanics : MonoBehaviour
     {
-        [SerializeField] private ShootMechanics _shootMechanics;
-        [SerializeField] private EventReceiver _eventReceiver;
+        [SerializeField] private EventReceiver _shootReceiver;
         [SerializeField] private TimerBehavior _timer;
 
         
@@ -14,30 +13,19 @@ namespace HomeWork.GameMechanics.Mechanics
             _timer.Play();
         }
 
-        
         private void Update()
         {
             if (!_timer.IsPlaying)
             {
                 _timer.ResetTime();
                 _timer.Play();
-                _shootMechanics.OnShoot();
+                _shootReceiver.Call();
             }
-        }
-
-        private void OnEnable()
-        {
-            _eventReceiver.OnEvent += OnAIShoot;
-        }
-
-        private void OnDisable()
-        {
-            _eventReceiver.OnEvent -= OnAIShoot;
         }
 
         private void OnAIShoot()
         {
-            _shootMechanics.OnShoot();
+            _shootReceiver.Call();
         }
     }
 }
