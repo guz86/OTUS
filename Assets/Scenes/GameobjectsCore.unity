@@ -2815,6 +2815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootReceiver: {fileID: 1395787681}
+  _moveReceiver: {fileID: 1342061672}
 --- !u!1 &1847796680
 GameObject:
   m_ObjectHideFlags: 0
