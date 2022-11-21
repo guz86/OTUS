@@ -257,8 +257,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 208376571}
+  - component: {fileID: 208376572}
   m_Layer: 0
-  m_Name: Player(Blue)
+  m_Name: Character (Blue)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -281,6 +282,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &208376572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208376570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: defe799377344931aa66b97680d9635c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hitPoints: {fileID: 152386221}
+  _attackReceiver: {fileID: 463795881}
+  _takeDamageReceiver: {fileID: 1505337128}
+  _deathReceiver: {fileID: 760055935}
 --- !u!1 &458029172
 GameObject:
   m_ObjectHideFlags: 0
