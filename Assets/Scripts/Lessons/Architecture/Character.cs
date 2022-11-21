@@ -10,7 +10,7 @@ namespace Lessons.Architecture.Mechanics
         [SerializeField] private EventReceiver _attackReceiver;
         [SerializeField] private IntEventReceiver _takeDamageReceiver;
         [SerializeField] private EventReceiver _deathReceiver;
-        //[SerializeField] private Vector3EventReceiver _moveReceiver;
+        [SerializeField] private Vector3EventReceiver _moveReceiver;
 
         public event Action<int> OnHitPointChanged
         {
@@ -40,10 +40,10 @@ namespace Lessons.Architecture.Mechanics
             _takeDamageReceiver.Call(damage);
         }   
         
-        // public void Move(Vector3 vector)
-        // {
-        //     _moveReceiver.Call(vector);
-        // }
+        public void Move(Vector3 vector)
+        {
+            _moveReceiver.Call(vector);
+        }
         
     }
 }
