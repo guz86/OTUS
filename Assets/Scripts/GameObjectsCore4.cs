@@ -1,4 +1,4 @@
-﻿namespace Lessons
+﻿namespace Lesson
 {
     public class GameObjectsCore4
     {
