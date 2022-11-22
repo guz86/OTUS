@@ -2,11 +2,11 @@
 
 namespace Lessons.Architecture.Mechanics
 {
-    public class EnemyMoveController : MonoBehaviour
+    public class EnemyMoveController : AbstractMoveController
     {
         [SerializeField] private Enemy _enemy;
 
-        private void Update()
+        /*private void Update()
         {
             HandleKeyboard();
         }
@@ -29,9 +29,9 @@ namespace Lessons.Architecture.Mechanics
             {
                 this.Move(Vector3.right);
             }
-        }
+        }*/
 
-        private void Move(Vector3 direction)
+        protected override void Move(Vector3 direction)
         {
             const float speed = 5.0f;
             _enemy.Move(direction * (speed * Time.deltaTime));

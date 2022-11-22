@@ -2,11 +2,10 @@
 
 namespace Lessons.Architecture.Mechanics
 {
-    public class CharacterMoveController : AbstractMoveController
+    public abstract class AbstractMoveController : MonoBehaviour
     {
-        [SerializeField] private Character _character;
-
-        /*private void Update()
+        
+        private void Update()
         {
             HandleKeyboard();
         }
@@ -29,12 +28,8 @@ namespace Lessons.Architecture.Mechanics
             {
                 this.Move(Vector3.right);
             }
-        }*/
-
-        protected override void Move(Vector3 direction)
-        {
-            const float speed = 5.0f;
-            _character.Move(direction * (speed * Time.deltaTime));
         }
+
+        protected abstract void Move(Vector3 direction);
     }
 }
