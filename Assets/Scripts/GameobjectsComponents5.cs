@@ -33,7 +33,8 @@ namespace Lesson
     // добавляем на объект MoveController и создадим новый геймоббжект Components - Move
     // и нужно реализовать MoveСomponent для IMoveComponent
     // MoveСomponent без бизнес логики это связующее звено объекта с внешним миром
-
+    // Controller - Char(Entity) - Component - Move (MoveComponent) - через Receiver - в ядро Core - Movement(MoveMechanics)
+    // Controller - Enemy(Entity) - Component - Move (MoveComponent) - через Receiver - в ядро Core - Movement(MoveMechanics)
    
 
 }
