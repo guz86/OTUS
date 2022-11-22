@@ -7,10 +7,16 @@ namespace Lessons.Architecture.Mechanics
     {
 
         [SerializeField] private IntEventReceiver _takeDamageReceiver;
+        [SerializeField] private Vector3EventReceiver _moveReceiver;
         
         public void TakeDamage(int damage)
         {
             this._takeDamageReceiver.Call(damage);
+        }
+        
+        public void Move(Vector3 vector)
+        {
+            _moveReceiver.Call(vector);
         }
     }
 }
