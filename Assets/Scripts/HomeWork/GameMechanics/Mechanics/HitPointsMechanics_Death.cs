@@ -2,29 +2,27 @@
 
 namespace HomeWork.GameMechanics.Mechanics
 {
-    public sealed class DeathMechanics : MonoBehaviour
+    public sealed class HitPointsMechanics_Death : MonoBehaviour
     {
         [SerializeField] private IntBehaviour _hitPoints;
         [SerializeField] private EventReceiver _deathReceiver;
-        [SerializeField] private GameObject _gameobject;
-        
+
 
         private void OnEnable()
         {
-            this._hitPoints.OnValueChanged += this.OnHitPointsChanged;
+            this._hitPoints.OnValueChanged += OnHitPointsChanged;
         }
 
         private void OnDisable()
         {
-            this._hitPoints.OnValueChanged -= this.OnHitPointsChanged;
+            this._hitPoints.OnValueChanged -= OnHitPointsChanged;
         }
 
         private void OnHitPointsChanged(int newHitPoints)
         {
             if (newHitPoints <= 0)
             {
-                this._deathReceiver.Call();
-                _gameobject.SetActive(false);
+                _deathReceiver.Call();
             }
         }
     }

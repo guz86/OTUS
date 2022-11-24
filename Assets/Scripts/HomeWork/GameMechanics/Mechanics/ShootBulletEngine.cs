@@ -6,7 +6,7 @@ namespace HomeWork.GameMechanics.Mechanics
     {
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private GameObject _weaponPoint;
-        [SerializeField] private IntBehaviour __bulletSpeed;
+        [SerializeField] private float _bulletSpeed;
         private GameObject _bulletInstance;
 
         public void Shoot()
@@ -15,7 +15,7 @@ namespace HomeWork.GameMechanics.Mechanics
             _bulletInstance = Instantiate(_bulletPrefab, _weaponPoint.transform.position,
                 _weaponPoint.transform.rotation);
             var bulletInstanceRigidbody = _bulletInstance.GetComponent<Rigidbody>();
-            bulletInstanceRigidbody.AddForce(_weaponPoint.transform.forward * __bulletSpeed.Value);
+            bulletInstanceRigidbody.AddForce(_weaponPoint.transform.forward * _bulletSpeed);
         }
     }
 }
