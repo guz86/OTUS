@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 
 namespace Lessons.Architecture.Mechanics
 {
@@ -29,7 +29,7 @@ namespace Lessons.Architecture.Mechanics
             {
                 this.Move(Vector3.right);
             }
-        }*/
+        }#1#
 
         protected override void Move(Vector3 direction)
         {
@@ -37,4 +37,4 @@ namespace Lessons.Architecture.Mechanics
             _enemy.Move(direction * (speed * Time.deltaTime));
         }
     }
-}
+}*/
