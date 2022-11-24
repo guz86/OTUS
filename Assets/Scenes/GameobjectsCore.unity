@@ -1315,8 +1315,6 @@ GameObject:
   - component: {fileID: 732282283}
   - component: {fileID: 732282282}
   - component: {fileID: 732282285}
-  - component: {fileID: 732282287}
-  - component: {fileID: 732282286}
   m_Layer: 0
   m_Name: Movement
   m_TagString: Untagged
@@ -1377,11 +1375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f172ddf6538c4a959f6a166cfe8dea04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementReceiver: {fileID: 1342061672}
   _transformEngine: {fileID: 526248255}
-  _eventReceiver: {fileID: 732282282}
-  _pointPositionXOne: {fileID: 732282287}
-  _pointPositionXTwo: {fileID: 732282286}
+  _pointPositionXOne: -5
+  _pointPositionXTwo: 6
 --- !u!114 &732282285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1394,34 +1390,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92efd6e7ff4a44208facab1c7da92e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _randomMovementMechanics: {fileID: 732282284}
   _timer: {fileID: 732282283}
---- !u!114 &732282286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732282280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9faa9c20da685564ca092fbcf0be4ecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: 6
---- !u!114 &732282287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732282280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9faa9c20da685564ca092fbcf0be4ecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _value: -5
+  _enemy: {fileID: 1760133155}
+  _movementPositionRandomizer: {fileID: 732282284}
 --- !u!1 &744195857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,7 +2266,6 @@ GameObject:
   - component: {fileID: 1319366271}
   - component: {fileID: 1319366274}
   - component: {fileID: 1319366273}
-  - component: {fileID: 1319366272}
   m_Layer: 0
   m_Name: Shoot
   m_TagString: Untagged
@@ -2318,18 +2288,6 @@ Transform:
   m_Father: {fileID: 1427929616}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1319366272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319366270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04e40c2295e7c2c4facd10f0b22ae0d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1319366273
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -42,9 +42,9 @@ namespace HomeWork.GameMechanics.Mechanics
                 currentTime += Time.deltaTime;
                 progress = Mathf.Clamp01(currentTime / duration);
 
-                targetPosition = new Vector3(targetPosition.x, 0f, targetPosition.z);
-
                 var newPosition = Vector3.Lerp(startPosition, targetPosition, progress);
+                newPosition.y = 0;
+                
                 _transformEngine.SetPosition(newPosition);
             }
 

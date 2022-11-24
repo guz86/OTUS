@@ -2,10 +2,11 @@
 
 namespace HomeWork.GameMechanics.Mechanics
 {
-    public class AIMovementMechanics : MonoBehaviour
+    public class AIMovementBehavior : MonoBehaviour
     {
-        [SerializeField] private RandomMovementMechanics _randomMovementMechanics;
         [SerializeField] private TimerBehavior _timer;
+        [SerializeField] private Enemy _enemy;
+        [SerializeField] private MovementPositionRandomizer _movementPositionRandomizer;
 
         private void Start()
         {
@@ -18,8 +19,14 @@ namespace HomeWork.GameMechanics.Mechanics
             {
                 _timer.ResetTime();
                 _timer.Play();
-                _randomMovementMechanics.OnMove();
+                Move();
             }
+        }
+
+        private void Move()
+        {
+            var nextPosition = _movementPositionRandomizer.RandomPosition();
+            _enemy.Move(nextPosition);
         }
     }
 }

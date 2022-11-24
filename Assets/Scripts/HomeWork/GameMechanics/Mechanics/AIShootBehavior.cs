@@ -22,10 +22,5 @@ namespace HomeWork.GameMechanics.Mechanics
                 _enemy.Shoot();
             }
         }
-
-        private void OnAIShoot()
-        {
-            _enemy.Shoot();
-        }
     }
 }
