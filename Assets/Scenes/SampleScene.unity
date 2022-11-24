@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2164e7f1ab34d5a8bc97e6273d02f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unit: {fileID: 208376572}
+  _unit: {fileID: 1148223242}
 --- !u!1 &458029172
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,7 +854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitPoints: {fileID: 152386221}
-  deathReceiver: {fileID: 760055935}
+  deathReceiver: {fileID: 0}
 --- !u!1 &887894502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,13 +1100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88abd5a9fa6c4ca39ee133485768d5d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< .mine
-  takeDamageReceiver: {fileID: 1321004833}
-
-=======
   _components:
   - {fileID: 2094630345}
->>>>>>> .theirs
 --- !u!1 &1154269151
 GameObject:
   m_ObjectHideFlags: 0
