@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Lessons
+namespace Lesson
 {
     public class BasisArchitecture2 : MonoBehaviour
     {
