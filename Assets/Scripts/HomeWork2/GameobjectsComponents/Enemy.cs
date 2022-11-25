@@ -5,7 +5,7 @@ namespace HomeWork2.GameobjectsComponents
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private EventReceiver _shootReceiver;
-        [SerializeField] private VectorEventReceiver  _moveReceiver;
+        [SerializeField] private Vector3EventReceiver  _moveReceiver;
 
 
         public void Shoot()

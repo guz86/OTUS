@@ -6,7 +6,7 @@ namespace HomeWork2.GameobjectsComponents
     {
         [SerializeField] private TimerBehavior _timer;
         [SerializeField] private Enemy _enemy;
-        [SerializeField] private MovementPositionRandomizer _movementPositionRandomizer;
+        [SerializeField] private MovePositionRandomizer movePositionRandomizer;
 
         private void Start()
         {
@@ -25,7 +25,7 @@ namespace HomeWork2.GameobjectsComponents
 
         private void Move()
         {
-            var nextPosition = _movementPositionRandomizer.RandomPosition();
+            var nextPosition = movePositionRandomizer.RandomPosition();
             _enemy.Move(nextPosition);
         }
     }

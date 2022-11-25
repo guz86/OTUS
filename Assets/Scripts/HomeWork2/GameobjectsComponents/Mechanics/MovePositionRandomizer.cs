@@ -2,7 +2,7 @@
 
 namespace HomeWork2.GameobjectsComponents
 {
-    public class MovementPositionRandomizer : MonoBehaviour
+    public class MovePositionRandomizer : MonoBehaviour
     {
         [SerializeField] private TransformEngine _transformEngine;
         [SerializeField] private float _pointPositionXOne; //-5

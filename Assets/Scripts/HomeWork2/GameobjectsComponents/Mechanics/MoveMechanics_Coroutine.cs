@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace HomeWork2.GameobjectsComponents
 {
-    public class MovementMechanics : MonoBehaviour
+    public class MoveMechanics_Coroutine : MonoBehaviour
     {
-        [SerializeField] private VectorEventReceiver _moveReceiver;
+        [SerializeField] private Vector3EventReceiver _moveReceiver;
         [SerializeField] private TransformEngine _transformEngine;
         [SerializeField] private IntBehaviour _MovementSpeed; //15f
 
