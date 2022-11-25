@@ -35,7 +35,7 @@ namespace HomeWork2.GameobjectsComponents
         private IEnumerator JumpRoutine()
         {
             var position = _visualObject.transform.position;
-            var startPosition = new Vector3(position.x, 0.5f , position.z);
+            var startPosition = new Vector3(position.x, 0f , position.z);
             float progress = 0;
             float time = 0;
 

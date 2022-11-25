@@ -7,7 +7,6 @@ namespace HomeWork2.GameobjectsComponents
     {
         [SerializeField] private Vector3EventReceiver _moveReceiver;
         [SerializeField] private TransformEngine _transformEngine;
-        [SerializeField] private IntBehaviour _MovementSpeed; //15f
 
         private void OnEnable()
         {
