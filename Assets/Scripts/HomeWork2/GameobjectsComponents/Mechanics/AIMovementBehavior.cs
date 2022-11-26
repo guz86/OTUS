@@ -5,12 +5,14 @@ namespace HomeWork2.GameobjectsComponents
     public class AIMovementBehavior : MonoBehaviour
     {
         [SerializeField] private TimerBehavior _timer;
-        [SerializeField] private Enemy _enemy;
+        [SerializeField] private Entity _unit;
         [SerializeField] private MovePositionRandomizer movePositionRandomizer;
+        private IMoveComponent _moveComponent;
 
         private void Start()
         {
             _timer.Play();
+            _moveComponent = _unit.Get<IMoveComponent>();
         }
 
         private void Update()
@@ -26,7 +28,7 @@ namespace HomeWork2.GameobjectsComponents
         private void Move()
         {
             var nextPosition = movePositionRandomizer.RandomPosition();
-            _enemy.Move(nextPosition);
+            _moveComponent.Move(nextPosition);
         }
     }
 }

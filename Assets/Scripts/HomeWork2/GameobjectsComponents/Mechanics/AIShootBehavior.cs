@@ -4,13 +4,15 @@ namespace HomeWork2.GameobjectsComponents
 {
     public class AIShootBehavior : MonoBehaviour
     {
-        [SerializeField] private Enemy _enemy;
+        [SerializeField] private Entity _unit;
         [SerializeField] private TimerBehavior _timer;
+        private IAttackComponent _attackComponent;
 
-        
+
         private void Start()
         {
             _timer.Play();
+            _attackComponent = _unit.Get<IAttackComponent>();
         }
 
         private void Update()
@@ -19,7 +21,7 @@ namespace HomeWork2.GameobjectsComponents
             {
                 _timer.ResetTime();
                 _timer.Play();
-                _enemy.Shoot();
+                _attackComponent.Attack();
             }
         }
     }
