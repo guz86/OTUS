@@ -12,7 +12,7 @@ namespace HomeWork2.GameobjectsComponents
 
         private void HandleKeyboard()
         {
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 this.Jump();
             }

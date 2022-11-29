@@ -7,12 +7,12 @@ namespace HomeWork2.GameobjectsComponents
         [SerializeField] private TimerBehavior _timer;
         [SerializeField] private Entity _unit;
         [SerializeField] private MovePositionRandomizer movePositionRandomizer;
-        private IMoveComponent _moveComponent;
+        private IMoveInDirectionComponent _moveInDirectionComponent;
 
         private void Start()
         {
             _timer.Play();
-            _moveComponent = _unit.Get<IMoveComponent>();
+            _moveInDirectionComponent = _unit.Get<IMoveInDirectionComponent>();
         }
 
         private void Update()
@@ -28,7 +28,7 @@ namespace HomeWork2.GameobjectsComponents
         private void Move()
         {
             var nextPosition = movePositionRandomizer.RandomPosition();
-            _moveComponent.Move(nextPosition);
+            _moveInDirectionComponent.Move(nextPosition);
         }
     }
 }

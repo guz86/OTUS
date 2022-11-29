@@ -6,18 +6,17 @@ namespace HomeWork2.GameobjectsComponents
     {
         [SerializeField] private Entity _unit;
 
-        private IMoveComponent _moveComponent;
+        private IMoveInDirectionComponent _moveInDirectionComponent;
 
         private void Awake()
         {
-            _moveComponent = _unit.Get<IMoveComponent>();
+            _moveInDirectionComponent = _unit.Get<IMoveInDirectionComponent>();
         }
 
         protected override void Move(Vector3 direction)
         {
-            const float speed = 5.0f;
-            var velocity = direction * (speed * Time.deltaTime);
-            _moveComponent.Move(velocity);
+            var velocity = direction * Time.deltaTime;
+            _moveInDirectionComponent.Move(velocity);
         }
     }
 }

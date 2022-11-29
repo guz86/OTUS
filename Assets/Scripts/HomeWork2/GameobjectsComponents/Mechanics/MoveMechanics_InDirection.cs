@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace HomeWork2.GameobjectsComponents
 {
-    public class MoveMechanics : MonoBehaviour
+    public class MoveMechanics_InDirection : MonoBehaviour
     {
         [SerializeField] private Vector3EventReceiver _moveReceiver;
         [SerializeField] private TransformEngine _transformEngine;
+        [SerializeField] private FloatBehavior _speed;
 
         private void OnEnable()
         {
@@ -18,9 +18,9 @@ namespace HomeWork2.GameobjectsComponents
             _moveReceiver.OnEvent -= OnMove;
         }
 
-        private void OnMove(Vector3 moveVector)
+        private void OnMove(Vector3 direction)
         {
-            _transformEngine.AddPosition(moveVector);
+            _transformEngine.AddPosition(direction * _speed.Value);
         }
     }
 }

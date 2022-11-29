@@ -2,7 +2,7 @@
 
 namespace HomeWork2.GameobjectsComponents
 {
-    public class MoveСomponent : MonoBehaviour, IMoveComponent
+    public class MoveInDirectionСomponent : MonoBehaviour, IMoveInDirectionComponent
     {
         // логика взаимодействия с ядром
 
