@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HomeWork2.GameobjectsComponents
 {
-    public abstract class AttackRocketInput : MonoBehaviour
+    public sealed class AttackRocketInput : MonoBehaviour
     {
         public event Action OnAttack;
         

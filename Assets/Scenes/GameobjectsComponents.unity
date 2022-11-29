@@ -3870,6 +3870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1320116429}
   - component: {fileID: 1320116430}
+  - component: {fileID: 1320116431}
   m_Layer: 0
   m_Name: AttackBulletController
   m_TagString: Untagged
@@ -3905,6 +3906,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 744195859}
+  _input: {fileID: 1320116431}
+--- !u!114 &1320116431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320116428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d713c2a0bbc743efa62faea299b4c551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1322249491
 GameObject:
   m_ObjectHideFlags: 0
@@ -4612,6 +4626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1529358311}
   - component: {fileID: 1529358312}
+  - component: {fileID: 1529358313}
   m_Layer: 0
   m_Name: AttackRocketController
   m_TagString: Untagged
@@ -4647,6 +4662,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 744195859}
+  _input: {fileID: 1529358313}
+--- !u!114 &1529358313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529358310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066620fa7efb4430b997c4d66e9bede1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1578802536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5919,7 +5947,7 @@ GameObject:
   - component: {fileID: 2032999518}
   - component: {fileID: 2032999517}
   m_Layer: 0
-  m_Name: Attack
+  m_Name: AttackBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
