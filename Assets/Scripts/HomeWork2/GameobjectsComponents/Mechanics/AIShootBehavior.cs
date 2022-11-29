@@ -21,7 +21,7 @@ namespace HomeWork2.GameobjectsComponents
             {
                 _timer.ResetTime();
                 _timer.Play();
-                _attackComponent.Attack();
+                _attackComponent.OnAttack();
             }
         }
     }

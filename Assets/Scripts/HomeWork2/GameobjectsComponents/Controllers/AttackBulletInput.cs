@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace HomeWork2.GameobjectsComponents
 {
-    public abstract class AbstractAttackController : MonoBehaviour
+    public abstract class AttackBulletInput : MonoBehaviour
     {
+        public event Action OnAttack;
         
         private void Update()
         {
@@ -12,12 +14,12 @@ namespace HomeWork2.GameobjectsComponents
 
         private void HandleKeyboard()
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                this.Attack();
+                OnAttack?.Invoke();
             }
         }
 
-        protected abstract void Attack();
+        
     }
 }

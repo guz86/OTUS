@@ -2,6 +2,6 @@
 {
     public interface IAttackComponent
     {
-        void Attack();
+        void OnAttack();
     }
 }

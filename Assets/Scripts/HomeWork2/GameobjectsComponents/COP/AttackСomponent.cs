@@ -8,7 +8,7 @@ namespace HomeWork2.GameobjectsComponents
 
         [SerializeField] private EventReceiver _attackReceiver;
 
-        public void Attack()
+        public void OnAttack()
         {
             _attackReceiver.Call();
         }
