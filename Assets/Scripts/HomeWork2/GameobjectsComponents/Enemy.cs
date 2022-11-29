@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 
 namespace HomeWork2.GameobjectsComponents
 {
@@ -18,4 +18,4 @@ namespace HomeWork2.GameobjectsComponents
             _moveReceiver.Call(vector);
         }
     }
-}
+}*/
