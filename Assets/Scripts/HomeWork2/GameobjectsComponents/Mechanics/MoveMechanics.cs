@@ -20,7 +20,7 @@ namespace HomeWork2.GameobjectsComponents
 
         private void OnMove(Vector3 moveVector)
         {
-            _transformEngine.SetPosition(_transformEngine.GetPosition() + moveVector);
+            _transformEngine.AddPosition(moveVector);
         }
     }
 }

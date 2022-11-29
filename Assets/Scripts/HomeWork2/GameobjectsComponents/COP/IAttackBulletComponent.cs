@@ -1,6 +1,6 @@
 ﻿namespace HomeWork2.GameobjectsComponents
 {
-    public interface IAttackComponent
+    public interface IAttackBulletComponent
     {
         void Attack();
     }

@@ -8,11 +8,11 @@ namespace HomeWork2.GameobjectsComponents
         [SerializeField] private AttackBulletInput _input;
         
 
-        private IAttackComponent _attackComponent;
+        private IAttackBulletComponent _attackBulletComponent;
 
         private void Awake()
         {
-            _attackComponent = _unit.Get<IAttackComponent>();
+            _attackBulletComponent = _unit.Get<IAttackBulletComponent>();
         }
 
         private void OnEnable()
@@ -27,7 +27,7 @@ namespace HomeWork2.GameobjectsComponents
 
         private void OnAttack()
         {
-            _attackComponent.Attack();
+            _attackBulletComponent.Attack();
         }
     } 
 }

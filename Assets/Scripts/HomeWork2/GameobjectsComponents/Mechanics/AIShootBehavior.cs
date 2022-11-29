@@ -6,13 +6,13 @@ namespace HomeWork2.GameobjectsComponents
     {
         [SerializeField] private Entity _unit;
         [SerializeField] private TimerBehavior _timer;
-        private IAttackComponent _attackComponent;
+        private IAttackBulletComponent _attackBulletComponent;
 
 
         private void Start()
         {
             _timer.Play();
-            _attackComponent = _unit.Get<IAttackComponent>();
+            _attackBulletComponent = _unit.Get<IAttackBulletComponent>();
         }
 
         private void Update()
@@ -21,7 +21,7 @@ namespace HomeWork2.GameobjectsComponents
             {
                 _timer.ResetTime();
                 _timer.Play();
-                _attackComponent.Attack();
+                _attackBulletComponent.Attack();
             }
         }
     }

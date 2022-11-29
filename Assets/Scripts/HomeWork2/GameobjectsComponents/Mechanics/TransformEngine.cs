@@ -21,6 +21,10 @@ namespace HomeWork2.GameobjectsComponents
                 transform.position = position;
             }
         }
-        
+
+        public void AddPosition(Vector3 moveVector)
+        {
+            SetPosition(_mainTransform.position + moveVector);
+        }
     }
 }

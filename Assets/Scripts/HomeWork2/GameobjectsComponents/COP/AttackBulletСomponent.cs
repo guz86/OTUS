@@ -2,7 +2,7 @@
 
 namespace HomeWork2.GameobjectsComponents
 {
-    public class AttackСomponent : MonoBehaviour, IAttackComponent
+    public class AttackBulletСomponent : MonoBehaviour, IAttackBulletComponent
     {
         // логика взаимодействия с ядром
 
