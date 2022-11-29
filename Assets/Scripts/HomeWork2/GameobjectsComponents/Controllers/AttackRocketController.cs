@@ -2,9 +2,10 @@
 
 namespace HomeWork2.GameobjectsComponents
 {
-    public class AttackRocketController : AbstractAttackRocketController
+    public class AttackRocketController : MonoBehaviour
     {
         [SerializeField] private Entity _unit;
+        [SerializeField] private AttackRocketInput _input;
 
         private IAttackRocketComponent _attackRocketComponent;
 
@@ -12,8 +13,18 @@ namespace HomeWork2.GameobjectsComponents
         {
             _attackRocketComponent = _unit.Get<IAttackRocketComponent>();
         }
+
+        private void OnEnable()
+        {
+            _input.OnAttack += OnAttack;
+        }
         
-        protected override void Attack()
+        private void OnDisable()
+        {
+            _input.OnAttack -= OnAttack;
+        }
+
+        private void OnAttack()
         {
             _attackRocketComponent.Attack();
         }

@@ -27,7 +27,7 @@ namespace HomeWork2.GameobjectsComponents
 
         private void OnAttack()
         {
-            _attackComponent.OnAttack();
+            _attackComponent.Attack();
         }
     } 
 }
