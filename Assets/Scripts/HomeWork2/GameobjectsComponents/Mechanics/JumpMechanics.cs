@@ -32,6 +32,7 @@ namespace HomeWork2.GameobjectsComponents
             }
         }
 
+        // с rigidbody вызывает баги, проваливание
         private IEnumerator JumpRoutine()
         {
             var position = _visualObject.transform.position;

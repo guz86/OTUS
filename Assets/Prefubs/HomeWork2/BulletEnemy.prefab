@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4202296595060892440}
   - component: {fileID: 1295550025052211596}
   - component: {fileID: 618498070312508090}
+  - component: {fileID: -1824134863795297437}
   m_Layer: 0
   m_Name: BulletEnemy
   m_TagString: Player
@@ -128,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83885ff4fa90bd468a22b06496e7eef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destoyTime: {fileID: 618498070312508090}
 --- !u!114 &618498070312508090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,3 +142,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _value: 3
+--- !u!114 &-1824134863795297437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4202296595060892441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33f3b16fc2d411d951800aa704853c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

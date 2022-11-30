@@ -26,7 +26,8 @@ namespace HomeWork2.GameobjectsComponents
             if (obj.gameObject.CompareTag(_tag))
             {
                 _takeDamageReceiver.Call(_damage.Value);
-                Destroy(obj.gameObject);
+                //Destroy(obj.gameObject);
+                obj.gameObject.SetActive(false);
             }
         }
     }
