@@ -16,7 +16,6 @@ namespace HomeWork2.GameobjectsComponents
         private void OnCollisionEnter(Collision collision)
         {
             this.OnCollisionEntered?.Invoke(collision);
-            //Debug.Log("OnCollisionEntered" + collision + gameObject+ gameObject.tag);
         }
 
         private void OnCollisionStay(Collision collision)

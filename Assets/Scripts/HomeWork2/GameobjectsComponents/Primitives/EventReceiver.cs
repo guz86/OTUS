@@ -11,7 +11,7 @@ namespace HomeWork2.GameobjectsComponents
         [Button]
         public void Call()
         {
-            Debug.Log($"Event {name} received");
+            //Debug.Log($"Event {name} received");
             OnEvent?.Invoke();
         }
     }

@@ -2,11 +2,12 @@
 
 namespace HomeWork2.GameobjectsComponents
 {
-    public class ShootBulletEngine : ObjectPool_List
+    public class ShootProjectileEngine : ObjectPool_List
     {
         [SerializeField] private GameObject _bulletPrefab;
         [SerializeField] private GameObject _weaponPoint;
         [SerializeField] private float _bulletSpeed;
+        
         //[SerializeField] private ObjectPooler _objectPooler;
         //private GameObject _bulletInstance;
         //private string _tag = "Bullet";
@@ -18,7 +19,6 @@ namespace HomeWork2.GameobjectsComponents
 
         public void Shoot()
         {
-
             if (TryGetObject(out GameObject bullet))
             {
                 bullet.SetActive(true);
@@ -27,7 +27,6 @@ namespace HomeWork2.GameobjectsComponents
                 var bulletInstanceRigidbody = bullet.GetComponent<Rigidbody>();
                 bulletInstanceRigidbody.AddForce(_weaponPoint.transform.forward * _bulletSpeed);
             }
-            
             
             // _bulletInstance = _objectPooler.SpawnFromPool(_tag,
             //     _weaponPoint.transform.position,

@@ -6,7 +6,6 @@ namespace HomeWork2.GameobjectsComponents
     {
         [SerializeField] private IntEventReceiver _takeDamageReceiver;
         [SerializeField] private IntBehaviour _hitPoints; 
-        //[SerializeField] private ActionBehaviourPlayParticle _particle;
         
 
         private void OnEnable()
@@ -22,7 +21,6 @@ namespace HomeWork2.GameobjectsComponents
         private void OnDamageTaken(int damage)
         {
             this._hitPoints.Value -= damage;
-        //    if (_particle != null) _particle.Do();
         }
     }
 }

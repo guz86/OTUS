@@ -6,7 +6,7 @@ namespace HomeWork2.GameobjectsComponents
     {
         [SerializeField] private EventReceiver _attackReceiver;
         [SerializeField] private TimerBehavior _cooldown;
-        [SerializeField] private ShootBulletEngine _shootBulletEngine;
+        [SerializeField] private ShootProjectileEngine shootProjectileEngine;
         
 
         private void OnEnable()
@@ -27,7 +27,7 @@ namespace HomeWork2.GameobjectsComponents
             }
 
             // логика выстрела
-            _shootBulletEngine.Shoot();
+            shootProjectileEngine.Shoot();
 
             // сбросить и запустить таймер снова
             _cooldown.ResetTime();

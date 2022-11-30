@@ -6,7 +6,7 @@ namespace HomeWork2.GameobjectsComponents
     {
         [SerializeField] private EventReceiver _attackReceiver;
         [SerializeField] private TimerBehavior _cooldown;
-        [SerializeField] private ShootBulletEngine _shootBulletEngine;
+        [SerializeField] private ShootProjectileEngine shootProjectileEngine;
         [SerializeField] private IntBehaviour _manaPoints; 
         [SerializeField] private int _takemana; // 5 
         
@@ -34,7 +34,7 @@ namespace HomeWork2.GameobjectsComponents
             
             // логика выстрела
             
-            _shootBulletEngine.Shoot();
+            shootProjectileEngine.Shoot();
             
             OnManaTaken(_takemana);
             
