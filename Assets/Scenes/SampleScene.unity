@@ -526,7 +526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2164e7f1ab34d5a8bc97e6273d02f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unit: {fileID: 208376572}
+  _unit: {fileID: 1148223242}
 --- !u!1 &458029172
 GameObject:
   m_ObjectHideFlags: 0
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da50df948a0d4198b70e16aec7d09d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackReceiver: {fileID: 463795881}
+  attackReceiver: {fileID: 463795881}
   _cooldown: {fileID: 463795880}
   _enemy: {fileID: 0}
   _damage: {fileID: 1495606305}
@@ -854,7 +854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitPoints: {fileID: 152386221}
-  _deathReceiver: {fileID: 760055935}
+  deathReceiver: {fileID: 0}
 --- !u!1 &887894502
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,7 +1258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 132152307f8c464a988de2c3c8ea0e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _takeDamageReceiver: {fileID: 1505337128}
+  takeDamageReceiver: {fileID: 1505337128}
   _hitPoints: {fileID: 152386221}
   _delay: {fileID: 1248563987}
   _restorePeriod: {fileID: 1248563988}
@@ -1352,7 +1352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3929adad889242288c4295cf22128380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _takeDamageReceiver: {fileID: 1321004833}
+  takeDamageReceiver: {fileID: 1321004833}
   _hitPoints: {fileID: 158554376}
 --- !u!114 &1321004833
 MonoBehaviour:
@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3929adad889242288c4295cf22128380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _takeDamageReceiver: {fileID: 1505337128}
+  takeDamageReceiver: {fileID: 1505337128}
   _hitPoints: {fileID: 152386221}
 --- !u!114 &1505337128
 MonoBehaviour:
@@ -1690,7 +1690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitPoints: {fileID: 158554376}
-  _deathReceiver: {fileID: 1740880790}
+  deathReceiver: {fileID: 1740880790}
 --- !u!114 &1740880790
 MonoBehaviour:
   m_ObjectHideFlags: 0

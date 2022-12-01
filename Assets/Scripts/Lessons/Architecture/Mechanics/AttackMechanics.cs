@@ -4,7 +4,7 @@ namespace Lessons.Architecture.Mechanics
 {
     public class AttackMechanics : MonoBehaviour
     {
-        [SerializeField] private EventReceiver _attackReceiver;
+        [SerializeField] private EventReceiver attackReceiver;
         [SerializeField] private TimerBehavior _cooldown;
         [Space][SerializeField] private Enemy _enemy;
         
@@ -16,12 +16,12 @@ namespace Lessons.Architecture.Mechanics
         
         private void OnEnable()
         {
-            this._attackReceiver.OnEvent += this.OnRequestAttack;
+            this.attackReceiver.OnEvent += this.OnRequestAttack;
         }
 
         private void OnDisable()
         {
-            this._attackReceiver.OnEvent -= this.OnRequestAttack;
+            this.attackReceiver.OnEvent -= this.OnRequestAttack;
         }
 
         private void OnRequestAttack()

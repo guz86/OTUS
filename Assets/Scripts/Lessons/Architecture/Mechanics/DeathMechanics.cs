@@ -5,7 +5,7 @@ namespace Lessons.Architecture.Mechanics
     public sealed class DeathMechanics : MonoBehaviour
     {
         [SerializeField] private IntBehaviour _hitPoints;
-        [SerializeField] private EventReceiver _deathReceiver;
+        [SerializeField] private EventReceiver deathReceiver;
 
         private void OnEnable()
         {
@@ -21,7 +21,7 @@ namespace Lessons.Architecture.Mechanics
         {
             if (newHitPoints <= 0)
             {
-                this._deathReceiver.Call();
+                this.deathReceiver.Call();
             }
         }
     }

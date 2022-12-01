@@ -4,21 +4,21 @@ namespace Lessons.Architecture.Mechanics
 {
     public class RestoreHitPointsMechanics : MonoBehaviour
     {
-        [SerializeField] private IntEventReceiver _takeDamageReceiver;
+        [SerializeField] private IntEventReceiver takeDamageReceiver;
         [SerializeField] private IntBehaviour _hitPoints;
         [SerializeField] private TimerBehavior _delay; // задержка перед запуском
         [SerializeField] private PeriodBehavior _restorePeriod; // восстановление хп
 
         private void OnEnable()
         {
-            _takeDamageReceiver.OnEvent += OnDamageTaken;
+            takeDamageReceiver.OnEvent += OnDamageTaken;
             _delay.OnEnded += OnDelayEnded;
             _restorePeriod.OnEvent += OnRestoreHitPoints;
         }
 
         private void OnDisable()
         {
-            _takeDamageReceiver.OnEvent -= OnDamageTaken;
+            takeDamageReceiver.OnEvent -= OnDamageTaken;
             _delay.OnEnded -= OnDelayEnded;
             _restorePeriod.OnEvent -= OnRestoreHitPoints;
         }
