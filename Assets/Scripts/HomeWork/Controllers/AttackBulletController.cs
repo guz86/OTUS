@@ -3,7 +3,7 @@
 namespace HomeWork
 {
     public class AttackBulletController : MonoBehaviour, IStartGameListener,
-        IFinishGameListener
+        IFinishGameListener, IPauseGameListener
     {
         [SerializeField] private Entity _unit;
         [SerializeField] private AttackBulletInput _input;
@@ -24,6 +24,11 @@ namespace HomeWork
         void IFinishGameListener.OnFinishGame()
         {
             _input.OnAttack -= OnAttack;
+        }
+        
+        void IPauseGameListener.OnPauseGame()
+        {
+            enabled = false;
         }
 
         private void OnAttack()

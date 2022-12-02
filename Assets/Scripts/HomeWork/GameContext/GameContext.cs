@@ -46,5 +46,19 @@ namespace HomeWork
 
             Debug.Log("Game Finish");
         }
+        
+        [Button]
+        public void PauseGame()
+        {
+            foreach (var listener in _listeners)
+            {
+                if (listener is IPauseGameListener pauseGameListener)
+                {
+                    pauseGameListener.OnPauseGame();
+                }
+            }
+
+            Debug.Log("Game Pause");
+        }
     }
 }

@@ -3,7 +3,7 @@
 namespace HomeWork
 {
     public class MoveController : AbstractMoveController, IStartGameListener,
-        IFinishGameListener
+        IFinishGameListener, IPauseGameListener
     {
         [SerializeField] private Entity _unit;
         private IMoveInDirectionComponent _moveInDirectionComponent;
@@ -27,6 +27,11 @@ namespace HomeWork
         }
 
         void IFinishGameListener.OnFinishGame()
+        {
+            enabled = false;
+        }
+
+        void IPauseGameListener.OnPauseGame()
         {
             enabled = false;
         }
