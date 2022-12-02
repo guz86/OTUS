@@ -2,11 +2,12 @@
 
 namespace HomeWork
 {
-    public class AttackBulletController : MonoBehaviour
+    public class AttackBulletController : MonoBehaviour, IStartGameListener,
+        IFinishGameListener
     {
         [SerializeField] private Entity _unit;
         [SerializeField] private AttackBulletInput _input;
-        
+
 
         private IAttackBulletComponent _attackBulletComponent;
 
@@ -15,12 +16,12 @@ namespace HomeWork
             _attackBulletComponent = _unit.Get<IAttackBulletComponent>();
         }
 
-        private void OnEnable()
+        void IStartGameListener.OnStartGame()
         {
             _input.OnAttack += OnAttack;
         }
-        
-        private void OnDisable()
+
+        void IFinishGameListener.OnFinishGame()
         {
             _input.OnAttack -= OnAttack;
         }
@@ -29,5 +30,5 @@ namespace HomeWork
         {
             _attackBulletComponent.Attack();
         }
-    } 
+    }
 }
