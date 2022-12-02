@@ -6,8 +6,7 @@ namespace HomeWork
 {
     public sealed class GameContext : MonoBehaviour
     {
-        [ShowInInspector]
-        private readonly List<object> _listeners = new();
+        [ShowInInspector] private readonly List<object> _listeners = new();
 
         public void AddListener(object listener)
         {
@@ -46,7 +45,7 @@ namespace HomeWork
 
             Debug.Log("Game Finish");
         }
-        
+
         [Button]
         public void PauseGame()
         {
@@ -55,6 +54,20 @@ namespace HomeWork
                 if (listener is IPauseGameListener pauseGameListener)
                 {
                     pauseGameListener.OnPauseGame();
+                }
+            }
+
+            Debug.Log("Game Pause");
+        }
+
+        [Button]
+        public void ResumeGame()
+        {
+            foreach (var listener in _listeners)
+            {
+                if (listener is IResumeGameListener resumeGameListener)
+                {
+                    resumeGameListener.OnResumeGame();
                 }
             }
 
