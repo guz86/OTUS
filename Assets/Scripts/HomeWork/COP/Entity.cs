@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HomeWork
 {
-    public class Entity : MonoBehaviour
+    public class Entity : MonoBehaviour, IEntity
     {
         [SerializeField] private MonoBehaviour[] _components;
 

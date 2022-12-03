@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,6 +9,18 @@ namespace HomeWork
     {
         [ShowInInspector] private readonly List<object> _listeners = new();
 
+        [ShowInInspector] private readonly List<object> _services = new();
+
+        public void AddService(object service)
+        {
+            _services.Add(service);
+        }
+
+        public void RemoveService(object service)
+        {
+            _services.Remove(service);
+        }
+
         public void AddListener(object listener)
         {
             _listeners.Add(listener);
@@ -16,6 +29,33 @@ namespace HomeWork
         public void RemoveListener(object listener)
         {
             _listeners.Remove(listener);
+        }
+        
+        
+        public T GetService<T>()
+        {
+            foreach (var service in _services)
+            {
+                if (service is T result)
+                {
+                    return result;
+                }
+            }
+
+            throw new Exception($"Service of type {typeof(T).Name} is not found!");
+        }
+
+        [Button]
+        public void ConstructGame()
+        {
+            foreach (var listener in _listeners)
+            {
+                if (listener is IConstructListener constructListener)
+                {
+                    constructListener.Construct(context: this);
+                }
+            }
+            Debug.Log("Game Construct!");
         }
 
         [Button]
@@ -29,7 +69,7 @@ namespace HomeWork
                 }
             }
 
-            Debug.Log("Game Started");
+            Debug.Log("Game Started!");
         }
 
         [Button]
@@ -43,7 +83,7 @@ namespace HomeWork
                 }
             }
 
-            Debug.Log("Game Finish");
+            Debug.Log("Game Finish!");
         }
 
         [Button]
@@ -57,7 +97,7 @@ namespace HomeWork
                 }
             }
 
-            Debug.Log("Game Pause");
+            Debug.Log("Game Pause!");
         }
 
         [Button]
@@ -71,7 +111,7 @@ namespace HomeWork
                 }
             }
 
-            Debug.Log("Game Pause");
+            Debug.Log("Game Resume!");
         }
     }
 }
