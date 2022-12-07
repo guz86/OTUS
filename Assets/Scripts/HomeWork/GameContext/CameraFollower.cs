@@ -9,7 +9,7 @@ namespace HomeWork
     {
         private Transform targetCamera;
 
-        private IComponent_GetPosition characterComponent;
+        private ITransformComponent characterComponent;
 
         [SerializeField]
         private Vector3 offset;
@@ -21,7 +21,9 @@ namespace HomeWork
 
         private void LateUpdate()
         {
-            this.targetCamera.position = this.characterComponent.Position + this.offset;
+            var newPosition = characterComponent.GetPosition() + offset;
+            targetCamera.position = newPosition;
+            //Debug.Log("LateUpdate newPosition" + newPosition);
         }
 
         void IConstructListener.Construct(GameContext context)
@@ -33,7 +35,7 @@ namespace HomeWork
             this.characterComponent = context
                 .GetService<CharacterService>()
                 .GetCharacter()
-                .Get<IComponent_GetPosition>();
+                .Get<ITransformComponent>();
         }
 
         void IStartGameListener.OnStartGame()
