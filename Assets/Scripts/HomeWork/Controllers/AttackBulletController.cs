@@ -2,7 +2,7 @@
 
 namespace HomeWork
 {
-    public class AttackBulletController : MonoBehaviour, IStartGameListener,
+    public sealed class AttackBulletController : MonoBehaviour, IStartGameListener,
         IFinishGameListener, IPauseGameListener, IResumeGameListener
     {
         [SerializeField] private Entity _unit;
@@ -28,12 +28,12 @@ namespace HomeWork
         
         void IPauseGameListener.OnPauseGame()
         {
-            enabled = false;
+            _input.OnAttack -= OnAttack;
         }
 
         void IResumeGameListener.OnResumeGame()
         {
-            enabled = true;
+            _input.OnAttack += OnAttack;
         }
 
         private void OnAttack()

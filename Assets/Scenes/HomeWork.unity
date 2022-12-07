@@ -1057,6 +1057,7 @@ MonoBehaviour:
   - {fileID: 1466314733}
   - {fileID: 1320116430}
   - {fileID: 1923806894}
+  - {fileID: 1529358312}
   _services:
   - {fileID: 476348431}
   - {fileID: 1497904220}
@@ -1246,7 +1247,7 @@ Transform:
   m_GameObject: {fileID: 393350816}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalScale: {x: 5, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1146163938}

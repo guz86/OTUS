@@ -21,17 +21,6 @@ namespace HomeWork
             _services.Remove(service);
         }
 
-        public void AddListener(object listener)
-        {
-            _listeners.Add(listener);
-        }
-
-        public void RemoveListener(object listener)
-        {
-            _listeners.Remove(listener);
-        }
-        
-        
         public T GetService<T>()
         {
             foreach (var service in _services)
@@ -43,6 +32,18 @@ namespace HomeWork
             }
 
             throw new Exception($"Service of type {typeof(T).Name} is not found!");
+        }
+        
+        // _listeners
+        
+        public void AddListener(object listener)
+        {
+            _listeners.Add(listener);
+        }
+
+        public void RemoveListener(object listener)
+        {
+            _listeners.Remove(listener);
         }
 
         [Button]
