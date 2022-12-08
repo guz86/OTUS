@@ -1037,6 +1037,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1915997839}
+  - {fileID: 1496104926}
+  - {fileID: 2031497945}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1058,6 +1060,9 @@ MonoBehaviour:
   - {fileID: 1320116430}
   - {fileID: 1923806894}
   - {fileID: 1529358312}
+  - {fileID: 67438410}
+  - {fileID: 1496104925}
+  - {fileID: 2031497944}
   _services:
   - {fileID: 476348431}
   - {fileID: 1497904220}
@@ -3163,7 +3168,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1320116429}
   - component: {fileID: 1320116430}
-  - component: {fileID: 1320116431}
   m_Layer: 0
   m_Name: AttackBulletController
   m_TagString: Untagged
@@ -3199,19 +3203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 744195859}
-  _input: {fileID: 1320116431}
---- !u!114 &1320116431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320116428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d713c2a0bbc743efa62faea299b4c551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _input: {fileID: 1496104925}
 --- !u!1 &1322249491
 GameObject:
   m_ObjectHideFlags: 0
@@ -3704,6 +3696,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc983f0ab9f44ecb13598b974545145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1496104924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1496104926}
+  - component: {fileID: 1496104925}
+  m_Layer: 0
+  m_Name: AttackBulletInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1496104925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496104924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d713c2a0bbc743efa62faea299b4c551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1496104926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496104924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 312537789}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1497904219
 GameObject:
   m_ObjectHideFlags: 0
@@ -3760,7 +3796,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1529358311}
   - component: {fileID: 1529358312}
-  - component: {fileID: 1529358313}
   m_Layer: 0
   m_Name: AttackRocketController
   m_TagString: Untagged
@@ -3796,19 +3831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 744195859}
-  _input: {fileID: 1529358313}
---- !u!114 &1529358313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529358310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 066620fa7efb4430b997c4d66e9bede1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _input: {fileID: 2031497944}
 --- !u!1 &1597395474
 GameObject:
   m_ObjectHideFlags: 0
@@ -4475,6 +4498,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitPoints: {fileID: 1675535970}
   _deathReceiver: {fileID: 2019497435}
+--- !u!1 &2031497943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2031497945}
+  - component: {fileID: 2031497944}
+  m_Layer: 0
+  m_Name: AttackRocketInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2031497944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031497943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066620fa7efb4430b997c4d66e9bede1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2031497945
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031497943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 312537789}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2032999516
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ namespace HomeWork
     public class CameraFollower : MonoBehaviour,
         IConstructListener,
         IStartGameListener,
-        IFinishGameListener
+        IFinishGameListener, IPauseGameListener, IResumeGameListener
     {
         private Transform targetCamera;
 
@@ -46,6 +46,16 @@ namespace HomeWork
         void IFinishGameListener.OnFinishGame()
         {
             this.enabled = false;
+        }
+        
+        void IPauseGameListener.OnPauseGame()
+        {
+            enabled = false;
+        }
+
+        void IResumeGameListener.OnResumeGame()
+        {
+            enabled = true;
         }
     }
 }

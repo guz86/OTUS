@@ -8,6 +8,11 @@ namespace HomeWork
     {
         public event Action OnAttack;
         
+        private void Awake()
+        {
+            enabled = false;
+        }
+        
         private void Update()
         {
             HandleKeyboard();

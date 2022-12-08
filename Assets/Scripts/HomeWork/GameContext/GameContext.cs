@@ -34,18 +34,7 @@ namespace HomeWork
             throw new Exception($"Service of type {typeof(T).Name} is not found!");
         }
         
-        // _listeners
         
-        public void AddListener(object listener)
-        {
-            _listeners.Add(listener);
-        }
-
-        public void RemoveListener(object listener)
-        {
-            _listeners.Remove(listener);
-        }
-
         [Button]
         public void ConstructGame()
         {
@@ -57,6 +46,20 @@ namespace HomeWork
                 }
             }
             Debug.Log("Game Construct!");
+        }
+
+        
+        
+        // _listeners
+        
+        public void AddListener(object listener)
+        {
+            _listeners.Add(listener);
+        }
+
+        public void RemoveListener(object listener)
+        {
+            _listeners.Remove(listener);
         }
 
         [Button]
