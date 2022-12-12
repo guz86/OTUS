@@ -1,20 +1,27 @@
-﻿using UnityEngine;
-
-namespace HomeWork
+﻿namespace HomeWork
 {
-    public class JumpController : AbstractJumpController, IStartGameListener,
-        IFinishGameListener, IPauseGameListener, IResumeGameListener
+    public class JumpController : AbstractJumpController,
+        IConstructListener,
+        IStartGameListener,
+        IFinishGameListener,
+        IPauseGameListener,
+        IResumeGameListener
     {
-        [SerializeField] private Entity _unit;
-
         private IJumpComponent _jumpComponent;
 
         private void Awake()
         {
-            _jumpComponent = _unit.Get<IJumpComponent>();
             enabled = false;
         }
-        
+
+        void IConstructListener.Construct(GameContext context)
+        {
+            _jumpComponent = context
+                .GetService<CharacterService>()
+                .GetCharacter()
+                .Get<IJumpComponent>();
+        }
+
         void IStartGameListener.OnStartGame()
         {
             enabled = true;
@@ -24,7 +31,7 @@ namespace HomeWork
         {
             enabled = false;
         }
-        
+
         void IPauseGameListener.OnPauseGame()
         {
             enabled = false;
@@ -34,10 +41,10 @@ namespace HomeWork
         {
             enabled = true;
         }
-        
+
         protected override void Jump()
         {
             _jumpComponent.Jump();
         }
-    } 
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace HomeWork
 {
-    public class DelayStartGameController : MonoBehaviour
+    public class GameLauncher : MonoBehaviour
     {
         [SerializeField] private GameContext _gameContext;
         [SerializeField] private TimerBehavior _delay;
@@ -46,12 +46,5 @@ namespace HomeWork
             _delayText.gameObject.SetActive(false);
             _gameContext.StartGame();
         }
-
-        // private IEnumerator StartGame()
-        // {
-        //     yield return new WaitForSeconds(3f);
-        //     _gameContext.StartGame();
-        //     Debug.Log("IEnumerator StartGame()");
-        // }
     }
 }

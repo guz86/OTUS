@@ -2,18 +2,23 @@
 
 namespace HomeWork
 {
-    public sealed class AttackBulletController : MonoBehaviour, IStartGameListener,
-        IFinishGameListener, IPauseGameListener, IResumeGameListener
-    {
-        [SerializeField] private Entity _unit;
+    public sealed class AttackBulletController : MonoBehaviour, 
+        IConstructListener,
+        IStartGameListener,
+        IFinishGameListener, 
+        IPauseGameListener, 
+        IResumeGameListener
+    { 
         [SerializeField] private AttackBulletInput _input;
-
 
         private IAttackBulletComponent _attackBulletComponent;
 
-        private void Awake()
+        public void Construct(GameContext context)
         {
-            _attackBulletComponent = _unit.Get<IAttackBulletComponent>();
+            _attackBulletComponent = context
+                .GetService<CharacterService>()
+                .GetCharacter()
+                .Get<IAttackBulletComponent>();
         }
 
         void IStartGameListener.OnStartGame()
@@ -40,5 +45,6 @@ namespace HomeWork
         {
             _attackBulletComponent.Attack();
         }
+
     }
 }
