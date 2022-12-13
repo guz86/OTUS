@@ -16,7 +16,6 @@ namespace HomeWork
         void IConstructListener.Construct(GameContext context)
         {
             _character = context.GetService<CharacterService>().GetCharacter();
-            Debug.Log("_character "+ _character);
         }
 
         void IStartGameListener.OnStartGame()
