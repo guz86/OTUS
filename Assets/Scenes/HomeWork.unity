@@ -2786,8 +2786,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345d7cfe25a145c9862e0f8197b675ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _visual: {fileID: 2071897956}
-  _collision: {fileID: 1353446883}
+  _visualTransform: {fileID: 2071897957}
+  _collisionTransform: {fileID: 1353446884}
 --- !u!1 &1125562558
 GameObject:
   m_ObjectHideFlags: 0

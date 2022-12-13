@@ -4,13 +4,13 @@ namespace HomeWork
 {
     public class VisualTransform : MonoBehaviour
     {
-        [SerializeField] private GameObject _visual;
-        [SerializeField] private GameObject _collision;
+        [SerializeField] private Transform _visualTransform;
+        [SerializeField] private Transform _collisionTransform;
 
         private void Update()
         {
-            _visual.transform.position = _collision.transform.position;
-            _visual.transform.rotation = _collision.transform.rotation;
+            _visualTransform.position = _collisionTransform.position;
+            _visualTransform.rotation = _collisionTransform.rotation;
         }
     }
 }
