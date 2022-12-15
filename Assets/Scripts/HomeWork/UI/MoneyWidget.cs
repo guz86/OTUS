@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 namespace HomeWork
 {
@@ -14,6 +15,7 @@ namespace HomeWork
         private void OnMoneyChanged(BigNumber money)
         {
             _moneyText.text = money.ToString();
+            AnimateTextBounce();
         }
 
         void IConstructListener.Construct(GameContext context)
@@ -31,7 +33,13 @@ namespace HomeWork
         {
             _moneyStorage.OnMoneyChanged -= OnMoneyChanged;
         }
-        
-        
+
+        private void AnimateTextBounce()
+        {
+            DOTween
+                .Sequence()
+                 .Append(_moneyText.transform.DOScale(new Vector3(1.1f, 1.1f, 1.0f), 0.1f))
+                 .Append(_moneyText.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.3f));
+        }
     }
 }
