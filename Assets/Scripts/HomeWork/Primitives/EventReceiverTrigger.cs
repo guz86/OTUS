@@ -14,7 +14,6 @@ namespace HomeWork
         private void OnTriggerEnter(Collider other)
         {
             OnTriggerEntered?.Invoke(other);
-            Debug.Log("OnTriggerEntered?.Invoke(other);");
         }
 
         private void OnTriggerStay(Collider other)
