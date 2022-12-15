@@ -16,20 +16,22 @@ namespace HomeWork
             _moneyText.text = money.ToString();
         }
 
-        public void Construct(GameContext context)
+        void IConstructListener.Construct(GameContext context)
         {
             _moneyStorage = context.GetService<MoneyStorage>();
             _moneyText.text = _moneyStorage.Money.ToString();
         }
 
-        public void OnStartGame()
+        void IStartGameListener.OnStartGame()
         {
             _moneyStorage.OnMoneyChanged += OnMoneyChanged;
         }
 
-        public void OnFinishGame()
+        void IFinishGameListener.OnFinishGame()
         {
             _moneyStorage.OnMoneyChanged -= OnMoneyChanged;
         }
+        
+        
     }
 }
