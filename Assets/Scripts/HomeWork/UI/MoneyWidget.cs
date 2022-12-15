@@ -12,12 +12,6 @@ namespace HomeWork
         [SerializeField] private TextMeshProUGUI _moneyText;
         private MoneyStorage _moneyStorage;
 
-        private void OnMoneyChanged(BigNumber money)
-        {
-            _moneyText.text = money.ToString();
-            AnimateTextBounce();
-        }
-
         void IConstructListener.Construct(GameContext context)
         {
             _moneyStorage = context.GetService<MoneyStorage>();
@@ -32,6 +26,12 @@ namespace HomeWork
         void IFinishGameListener.OnFinishGame()
         {
             _moneyStorage.OnMoneyChanged -= OnMoneyChanged;
+        }
+        
+        private void OnMoneyChanged(BigNumber money)
+        {
+            _moneyText.text = money.ToString();
+            AnimateTextBounce();
         }
 
         private void AnimateTextBounce()
