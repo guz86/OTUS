@@ -13,11 +13,7 @@ namespace HomeWork
 
         private void OnMoneyChanged(BigNumber money)
         {
-            Debug.Log("OnMoneyChanged(BigNumber money)");
             _moneyText.text = money.ToString();
-            
-            Debug.Log(" _moneyText.text "+  _moneyText.text);
-            Debug.Log(" money.ToString() "+  money.ToString());
         }
 
         public void Construct(GameContext context)

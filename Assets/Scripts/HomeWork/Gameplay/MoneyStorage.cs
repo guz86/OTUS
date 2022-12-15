@@ -26,9 +26,7 @@ namespace HomeWork
         [Button]
         public void AddMoney(BigNumber range)
         {
-            Debug.Log("range "+ range);
             this.money += range;
-            Debug.Log("money "+ money);
             this.OnMoneyChanged?.Invoke(this.money);
         }
 
