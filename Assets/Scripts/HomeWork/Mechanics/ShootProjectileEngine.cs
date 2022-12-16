@@ -8,10 +8,6 @@ namespace HomeWork
         [SerializeField] private GameObject _weaponPoint;
         [SerializeField] private float _bulletSpeed;
         
-        //[SerializeField] private ObjectPooler _objectPooler;
-        //private GameObject _bulletInstance;
-        //private string _tag = "Bullet";
-
         private void Start()
         {
             Initialize(_bulletPrefab);
@@ -27,20 +23,7 @@ namespace HomeWork
                 var bulletInstanceRigidbody = bullet.GetComponent<Rigidbody>();
                 bulletInstanceRigidbody.AddForce(_weaponPoint.transform.forward * _bulletSpeed);
             }
-            
-            // _bulletInstance = _objectPooler.SpawnFromPool(_tag,
-            //     _weaponPoint.transform.position,
-            //     _weaponPoint.transform.rotation);
-            //
-            // if (!_bulletInstance) return;
-            //
-            // var bulletInstanceRigidbody = _bulletInstance.GetComponent<Rigidbody>();
-            // bulletInstanceRigidbody.AddForce(_weaponPoint.transform.forward * _bulletSpeed);
 
-            // можно добавить пул из объектов до 20шт Pooling
-            //_bulletInstance = Instantiate(_bulletPrefab, _weaponPoint.transform.position, _weaponPoint.transform.rotation);
-            // var bulletInstanceRigidbody = _bulletInstance.GetComponent<Rigidbody>();
-            // bulletInstanceRigidbody.AddForce(_weaponPoint.transform.forward * _bulletSpeed);
         }
     }
 }

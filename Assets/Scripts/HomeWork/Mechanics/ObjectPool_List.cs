@@ -6,7 +6,6 @@ namespace HomeWork
 {
     public class ObjectPool_List : MonoBehaviour
     {
-        //[SerializeField] private GameObject _container;
         [SerializeField] private int _capacity;
 
         private List<GameObject> _pool = new List<GameObject>();
