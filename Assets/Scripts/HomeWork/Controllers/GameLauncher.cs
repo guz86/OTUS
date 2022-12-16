@@ -1,5 +1,4 @@
 ﻿using System;
-using TMPro;
 using UnityEngine;
 
 namespace HomeWork
@@ -8,8 +7,12 @@ namespace HomeWork
     {
         [SerializeField] private GameContext _gameContext;
         [SerializeField] private TimerBehavior _delay;
-        [SerializeField] private TMP_Text _delayText;
+        [SerializeField] private GameObject _panel;
+        [SerializeField] private GameObject _delayText;
+        [SerializeField] private StartTimerStorage _timerStorage;
 
+        private int _gameTime;
+        
         private void OnEnable()
         {
             _delay.OnEnded += OnDelayEnded;
@@ -24,26 +27,23 @@ namespace HomeWork
         {
             _gameContext.ConstructGame();
             _delay.Play();
-            _delayText.gameObject.SetActive(true);
+            _panel.SetActive(true);
+            _delayText.SetActive(true);
         }
 
         private void Update()
         {
-            var timerText = _delay.Duration - _delay.CurrentTime;
-            
-            if (timerText > 1)
+            if (_delay.CurrentTime >= _gameTime)
             {
-                _delayText.text = Math.Round(timerText).ToString();
-            }
-            else
-            {
-                _delayText.text = "Go!";
+                _timerStorage.UpdateTime(Convert.ToInt32(_delay.Duration) -_gameTime);
+                _gameTime += 1;
             }
         }
 
         private void OnDelayEnded()
         {
-            _delayText.gameObject.SetActive(false);
+            _panel.SetActive(false);
+            _delayText.SetActive(false);
             _gameContext.StartGame();
         }
     }
