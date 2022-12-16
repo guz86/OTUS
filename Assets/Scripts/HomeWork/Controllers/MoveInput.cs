@@ -48,7 +48,6 @@ namespace HomeWork
 
         void IStartGameListener.OnStartGame()
         {
-            Debug.Log("enabled = true;");
             enabled = true;
         }
 

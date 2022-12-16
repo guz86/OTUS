@@ -17,7 +17,6 @@ namespace HomeWork
         void IConstructListener.Construct(GameContext context)
         {
             _input = context.GetService<MoveInput>();
-            Debug.Log(_input);
             _moveInDirectionComponent = context.GetService<CharacterService>()
                 .GetCharacter()
                 .Get<IMoveInDirectionComponent>();
@@ -47,7 +46,6 @@ namespace HomeWork
         private void OnMove(Vector3 direction)
         {
             var velocity = direction * Time.deltaTime;
-            Debug.Log(velocity);
             _moveInDirectionComponent.Move(velocity);
         }
     }

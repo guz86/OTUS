@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace HomeWork
 {
-    public class JumpMechanics : MonoBehaviour
+    public class JumpMechanics_Coroutine : MonoBehaviour
     {
         [SerializeField] private EventReceiver _eventReceiver;
         [SerializeField] private GameObject _visualObject;

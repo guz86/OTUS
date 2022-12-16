@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 
 namespace HomeWork
 {
@@ -20,4 +20,4 @@ namespace HomeWork
 
         protected abstract void Jump();
     }
-}
+}*/

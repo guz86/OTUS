@@ -1,12 +1,15 @@
-﻿namespace HomeWork
+﻿using UnityEngine;
+
+namespace HomeWork
 {
-    public class JumpController : AbstractJumpController,
+    public class JumpController : MonoBehaviour,
         IConstructListener,
         IStartGameListener,
         IFinishGameListener,
         IPauseGameListener,
         IResumeGameListener
     {
+        private JumpInput _input;
         private IJumpComponent _jumpComponent;
 
         private void Awake()
@@ -16,33 +19,36 @@
 
         void IConstructListener.Construct(GameContext context)
         {
+            _input = context
+                .GetService<JumpInput>();
             _jumpComponent = context
                 .GetService<CharacterService>()
                 .GetCharacter()
                 .Get<IJumpComponent>();
         }
 
+
         void IStartGameListener.OnStartGame()
         {
-            enabled = true;
+            _input.OnJump += OnJump;
         }
 
         void IFinishGameListener.OnFinishGame()
         {
-            enabled = false;
+            _input.OnJump -= OnJump;
         }
 
         void IPauseGameListener.OnPauseGame()
         {
-            enabled = false;
+            _input.OnJump -= OnJump;
         }
 
         void IResumeGameListener.OnResumeGame()
         {
-            enabled = true;
+            _input.OnJump += OnJump;
         }
 
-        protected override void Jump()
+        private void OnJump()
         {
             _jumpComponent.Jump();
         }
