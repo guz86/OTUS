@@ -1,4 +1,4 @@
-﻿using TMPro;
+﻿/*using TMPro;
 using UnityEngine;
 using DG.Tweening;
 
@@ -42,4 +42,4 @@ namespace HomeWork
                  .Append(_moneyText.transform.DOScale(new Vector3(1.0f, 1.0f, 1.0f), 0.3f));
         }
     }
-}
+}*/

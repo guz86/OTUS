@@ -3,31 +3,31 @@
 namespace HomeWork
 {
     //ADAPTER
-    public sealed class MoneyPanelAdapter : MonoBehaviour,
+    public sealed class GemsPanelAdapter : MonoBehaviour,
         IConstructListener,
         IStartGameListener,
         IFinishGameListener
     {
         [SerializeField] private CurrencyPanel currencyPanel;
-        private MoneyStorage _moneyStorage;
+        private GemsStorage _gemsStorage;
 
         void IConstructListener.Construct(GameContext context)
         {
-            _moneyStorage = context.GetService<MoneyStorage>();
-            currencyPanel.SetupAmount(_moneyStorage.Money.ToString());
+            _gemsStorage = context.GetService<GemsStorage>();
+            currencyPanel.SetupAmount(_gemsStorage.Gems.ToString());
         }
 
         void IStartGameListener.OnStartGame()
         {
-            _moneyStorage.OnMoneyChanged += OnMoneyChanged;
+            _gemsStorage.OnGemsChanged += OnGemsChanged;
         }
 
         void IFinishGameListener.OnFinishGame()
         {
-            _moneyStorage.OnMoneyChanged -= OnMoneyChanged;
+            _gemsStorage.OnGemsChanged -= OnGemsChanged;
         }
 
-        private void OnMoneyChanged(int money)
+        private void OnGemsChanged(int money)
         {
             currencyPanel.UpdateAmount(money.ToString());
         }
