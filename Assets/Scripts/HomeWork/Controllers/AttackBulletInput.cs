@@ -3,8 +3,11 @@ using UnityEngine;
 
 namespace HomeWork
 {
-    public sealed class AttackBulletInput : MonoBehaviour, IStartGameListener,
-        IFinishGameListener, IPauseGameListener, IResumeGameListener
+    public sealed class AttackBulletInput : MonoBehaviour, 
+        IStartGameListener,
+        IFinishGameListener, 
+        IPauseGameListener, 
+        IResumeGameListener
     {
         public event Action OnAttack;
         

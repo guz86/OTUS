@@ -9,12 +9,13 @@ namespace HomeWork
         IPauseGameListener,
         IResumeGameListener
     {
-        [SerializeField] private AttackRocketInput _input;
+        private AttackRocketInput _input;
 
         private IAttackRocketComponent _attackRocketComponent;
 
         void IConstructListener.Construct(GameContext context)
         {
+            _input = context.GetService<AttackRocketInput>();
             _attackRocketComponent = context
                 .GetService<CharacterService>()
                 .GetCharacter()

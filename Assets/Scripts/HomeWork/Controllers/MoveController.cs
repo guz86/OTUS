@@ -2,51 +2,53 @@
 
 namespace HomeWork
 {
-    public class MoveController : AbstractMoveController, 
+    public class MoveController : MonoBehaviour,
         IConstructListener, 
         IStartGameListener,
         IFinishGameListener, 
         IPauseGameListener, 
         IResumeGameListener
     {
+        private MoveInput _input;
+        
         private IMoveInDirectionComponent _moveInDirectionComponent;
 
-        private void Awake()
-        {
-            enabled = false;
-        }
 
         void IConstructListener.Construct(GameContext context)
         {
+            _input = context.GetService<MoveInput>();
+            Debug.Log(_input);
             _moveInDirectionComponent = context.GetService<CharacterService>()
                 .GetCharacter()
                 .Get<IMoveInDirectionComponent>();
         }
+ 
+        public void OnStartGame()
+        {
+            _input.OnMove += OnMove;
+        }
 
-        protected override void Move(Vector3 direction)
+        public void OnFinishGame()
+        {
+            _input.OnMove -= OnMove;
+        }
+
+        public void OnPauseGame()
+        {
+            _input.OnMove -= OnMove;
+        }
+
+        public void OnResumeGame()
+        {
+            _input.OnMove += OnMove;
+        }
+        
+        
+        private void OnMove(Vector3 direction)
         {
             var velocity = direction * Time.deltaTime;
+            Debug.Log(velocity);
             _moveInDirectionComponent.Move(velocity);
-        }
-
-        void IStartGameListener.OnStartGame()
-        {
-            enabled = true;
-        }
-
-        void IFinishGameListener.OnFinishGame()
-        {
-            enabled = false;
-        }
-
-        void IPauseGameListener.OnPauseGame()
-        {
-            enabled = false;
-        }
-
-        void IResumeGameListener.OnResumeGame()
-        {
-            enabled = true;
         }
     }
 }
