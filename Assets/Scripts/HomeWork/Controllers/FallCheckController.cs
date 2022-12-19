@@ -7,10 +7,8 @@ namespace HomeWork
         IStartGameListener,
         IFinishGameListener
     {
-        
-        [SerializeField] private GameContext _gameContext; 
         [SerializeField] private string _colliderTag = "Finish";
-
+        
         private IEntity _character;
         
         void IConstructListener.Construct(GameContext context)
@@ -32,10 +30,8 @@ namespace HomeWork
         {
             if (other.CompareTag(_colliderTag))
             {
-                _gameContext.FinishGame();
+                _character.Get<IDeathComponent>().Die(); 
             }
         }
-
-
     }
 }

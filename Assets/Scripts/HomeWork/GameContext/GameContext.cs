@@ -49,6 +49,20 @@ namespace HomeWork
         }
 
         
+        [Button]
+        public void ReadyGame()
+        {
+            foreach (var listener in _listeners)
+            {
+                if (listener is IReadyGameListener readyListener)
+                {
+                    readyListener.OnReadyGame();
+                }
+            }
+            Debug.Log("ReadyGame!");
+        }
+
+        
         
         // _listeners
         
@@ -118,4 +132,6 @@ namespace HomeWork
             Debug.Log("Game Resume!");
         }
     }
+
+ 
 }
