@@ -14,6 +14,9 @@ namespace HomeWork
 
         private Coroutine _timerCoroutine;
 
+        public float CurrentTime => _currentTime;
+        public float Duration => _duration;
+        
         public bool IsPlaying
         {
             get { return this._timerCoroutine != null; }

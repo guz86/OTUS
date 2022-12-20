@@ -26,7 +26,6 @@ namespace HomeWork
             if (obj.gameObject.CompareTag(_tag))
             {
                 _takeDamageReceiver.Call(_damage.Value);
-                //Destroy(obj.gameObject);
                 obj.gameObject.SetActive(false);
             }
         }

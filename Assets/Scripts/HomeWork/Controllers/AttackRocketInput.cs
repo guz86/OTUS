@@ -3,9 +3,15 @@ using UnityEngine;
 
 namespace HomeWork
 {
-    public sealed class AttackRocketInput : MonoBehaviour
+    public sealed class AttackRocketInput : MonoBehaviour, IStartGameListener,
+        IFinishGameListener, IPauseGameListener, IResumeGameListener
     {
         public event Action OnAttack;
+        
+        private void Awake()
+        {
+            enabled = false;
+        }
         
         private void Update()
         {
@@ -20,6 +26,24 @@ namespace HomeWork
             }
         }
 
-       
+        void IStartGameListener.OnStartGame()
+        {
+            enabled = true;
+        }
+
+        void IFinishGameListener.OnFinishGame()
+        {
+            enabled = false;
+        }
+
+        void IPauseGameListener.OnPauseGame()
+        {
+            enabled = false;
+        }
+
+        void IResumeGameListener.OnResumeGame()
+        {
+            enabled = true;
+        }
     }
 }

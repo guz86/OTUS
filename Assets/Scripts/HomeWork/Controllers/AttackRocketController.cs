@@ -2,31 +2,49 @@
 
 namespace HomeWork
 {
-    public class AttackRocketController : MonoBehaviour
+    public class AttackRocketController : MonoBehaviour,
+        IConstructListener,
+        IStartGameListener,
+        IFinishGameListener,
+        IPauseGameListener,
+        IResumeGameListener
     {
-        [SerializeField] private Entity _unit;
-        [SerializeField] private AttackRocketInput _input;
+        private AttackRocketInput _input;
 
         private IAttackRocketComponent _attackRocketComponent;
 
-        private void Awake()
+        void IConstructListener.Construct(GameContext context)
         {
-            _attackRocketComponent = _unit.Get<IAttackRocketComponent>();
+            _input = context.GetService<AttackRocketInput>();
+            _attackRocketComponent = context
+                .GetService<CharacterService>()
+                .GetCharacter()
+                .Get<IAttackRocketComponent>();
         }
 
-        private void OnEnable()
+        void IStartGameListener.OnStartGame()
         {
             _input.OnAttack += OnAttack;
         }
-        
-        private void OnDisable()
+
+        void IFinishGameListener.OnFinishGame()
         {
             _input.OnAttack -= OnAttack;
+        }
+
+        void IPauseGameListener.OnPauseGame()
+        {
+            _input.OnAttack -= OnAttack;
+        }
+
+        void IResumeGameListener.OnResumeGame()
+        {
+            _input.OnAttack += OnAttack;
         }
 
         private void OnAttack()
         {
             _attackRocketComponent.Attack();
         }
-    } 
+    }
 }

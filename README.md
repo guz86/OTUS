@@ -1,4 +1,5 @@
-# ДЗ в ветке homework2_game_components
+# ДЗ в ветке playcontext
 
-ДЗ в Assets/Scripts/HomeWork2
-Сцена Assets/Scenes/GameobjectsComponents.unity
+ДЗ в Assets/Scripts/HomeWork
+
+Сцена Assets/Scenes/HomeWork.unity

@@ -11,7 +11,6 @@ namespace HomeWork
         [Button]
         public void Call(int value)
         {
-            //Debug.Log($"Event {name} received");
             this.OnEvent?.Invoke(value);
         }
     }

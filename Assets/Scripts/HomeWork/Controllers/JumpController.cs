@@ -2,20 +2,55 @@
 
 namespace HomeWork
 {
-    public class JumpController : AbstractJumpController
+    public class JumpController : MonoBehaviour,
+        IConstructListener,
+        IStartGameListener,
+        IFinishGameListener,
+        IPauseGameListener,
+        IResumeGameListener
     {
-        [SerializeField] private Entity _unit;
-
+        private JumpInput _input;
         private IJumpComponent _jumpComponent;
 
         private void Awake()
         {
-            _jumpComponent = _unit.Get<IJumpComponent>();
+            enabled = false;
         }
-        
-        protected override void Jump()
+
+        void IConstructListener.Construct(GameContext context)
+        {
+            _input = context
+                .GetService<JumpInput>();
+            _jumpComponent = context
+                .GetService<CharacterService>()
+                .GetCharacter()
+                .Get<IJumpComponent>();
+        }
+
+
+        void IStartGameListener.OnStartGame()
+        {
+            _input.OnJump += OnJump;
+        }
+
+        void IFinishGameListener.OnFinishGame()
+        {
+            _input.OnJump -= OnJump;
+        }
+
+        void IPauseGameListener.OnPauseGame()
+        {
+            _input.OnJump -= OnJump;
+        }
+
+        void IResumeGameListener.OnResumeGame()
+        {
+            _input.OnJump += OnJump;
+        }
+
+        private void OnJump()
         {
             _jumpComponent.Jump();
         }
-    } 
+    }
 }
