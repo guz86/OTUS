@@ -14,7 +14,7 @@ namespace HomeWork
         void IConstructListener.Construct(GameContext context)
         {
             _gemsStorage = context.GetService<GemsStorage>();
-            currencyPanel.SetupAmount(_gemsStorage.Gems.ToString());
+            currencyPanel.SetupValue(_gemsStorage.Gems.ToString());
         }
 
         void IStartGameListener.OnStartGame()
@@ -29,7 +29,7 @@ namespace HomeWork
 
         private void OnGemsChanged(int money)
         {
-            currencyPanel.UpdateAmount(money.ToString());
+            currencyPanel.UpdateValue(money.ToString());
         }
     }
 }

@@ -18,7 +18,7 @@ namespace HomeWork
         void IConstructListener.Construct(GameContext context)
         {
             _timer = context.GetService<GameStartTimer>();
-            _currencyPanel.SetupAmount(_timer.Timer.ToString());
+            _currencyPanel.SetupValue(_timer.Timer.ToString());
         }
 
         private void OnTimerStarted()
@@ -49,7 +49,7 @@ namespace HomeWork
 
         private void OnCountChanged(int count)
         {
-            _currencyPanel.UpdateAmount(count.ToString());
+            _currencyPanel.UpdateValue(count.ToString());
         }
     }
 }

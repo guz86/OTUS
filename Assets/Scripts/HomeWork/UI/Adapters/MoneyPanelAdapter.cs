@@ -14,7 +14,7 @@ namespace HomeWork
         void IConstructListener.Construct(GameContext context)
         {
             _moneyStorage = context.GetService<MoneyStorage>();
-            currencyPanel.SetupAmount(_moneyStorage.Money.ToString());
+            currencyPanel.SetupValue(_moneyStorage.Money.ToString());
         }
 
         void IStartGameListener.OnStartGame()
@@ -29,7 +29,7 @@ namespace HomeWork
 
         private void OnMoneyChanged(int money)
         {
-            currencyPanel.UpdateAmount(money.ToString());
+            currencyPanel.UpdateValue(money.ToString());
         }
     }
 }

@@ -9,12 +9,12 @@ namespace HomeWork
     {
         [SerializeField] private TextMeshProUGUI _amountText;
 
-        public void SetupAmount(string amount)
+        public void SetupValue(string amount)
         {
             _amountText.text = amount;
         }
         
-        public void UpdateAmount(string amount)
+        public void UpdateValue(string amount)
         {
             _amountText.text = amount;
             AnimateTextBounce();
