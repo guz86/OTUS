@@ -29,9 +29,7 @@ namespace HomeWork
 
         void IConstructListener.Construct(GameContext context)
         {
-            Debug.Log("IConstructListener.Construct(GameContext context)");
             _moneyStorage = context.GetService<MoneyStorage>();
-            Debug.Log(_moneyStorage.Money);
         }
     }
 }

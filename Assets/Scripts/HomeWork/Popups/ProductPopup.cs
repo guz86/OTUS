@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace HomeWork
 {
-    public sealed class ProductPopup : Popup, IConstructListener
+    public sealed class ProductPopup : Popup
     {
         [SerializeField] private TextMeshProUGUI _titleText;
 
@@ -14,51 +14,59 @@ namespace HomeWork
         [SerializeField] private Image _iconImage;
 
         [SerializeField] private BuyButton _buyButton;
-
-        private ProductBuyer _productBuyer;
-        private MoneyStorage _moneyStorage;
-
-        private Product _product;
+        
+        private IPresentationModel _presenter;
 
         protected override void OnShow(object args)
         {
-            if (args is not Product product)
+            if (args is not IPresentationModel presenter)
             {
-                throw new Exception("Expected product!");
+                throw new Exception("Expected Presentation model!");
             }
+            
+            _presenter = presenter;
+            
+            _presenter.OnBuyButtonStateChanged += OnBuyButtonStateChanged;
+            
+            _presenter.Start();
+            
+            _titleText.text = presenter.GetTitle();
+            _descriptionText.text = presenter.GetDescription();
+            _iconImage.sprite = presenter.GetIcon();
 
-            _product = product;
-
-            _titleText.text = product.title;
-            _descriptionText.text = product.description;
-            _iconImage.sprite = product.icon;
-
-            _buyButton.SetPrice(product.price.ToString());
-            _buyButton.SetAvailable(_productBuyer.CanBuy(product));
-            _buyButton.AddListener(OnBuyButtonClicked);
-
-            _moneyStorage.OnMoneyChanged += OnMoneyChanged;
+            _buyButton.SetPrice(presenter.GetPrice());
+            _buyButton.SetAvailable(presenter.CanBuy());
+            _buyButton.AddListener(this.OnBuyButtonClicked);
+        }
+        
+        private void OnBuyButtonStateChanged(bool isAvailabe)
+        {
+            _buyButton.SetAvailable(isAvailabe);
         }
 
         protected override void OnHide()
         {
-            _buyButton.RemoveListener(OnBuyButtonClicked);
+             _buyButton.RemoveListener(OnBuyButtonClicked);
+             _presenter.OnBuyButtonStateChanged -= OnBuyButtonStateChanged;
+             _presenter.Stop();
         }
 
         private void OnBuyButtonClicked()
         {
-            _productBuyer.Buy(_product);
+            _presenter.OnBuyClicked();
         }
 
-        private void OnMoneyChanged(int money)
+        public interface IPresentationModel
         {
-            _buyButton.SetAvailable(_productBuyer.CanBuy(_product));
-        }
-
-        public void Construct(GameContext context)
-        {
-            _productBuyer = context.GetService<ProductBuyer>();
-            _moneyStorage = context.GetService<MoneyStorage>();
+            string GetTitle();
+            void Start();
+            void Stop();
+            string GetDescription();
+            Sprite GetIcon();
+            string GetPrice();
+            bool CanBuy();
+            void OnBuyClicked();
+            event Action<bool> OnBuyButtonStateChanged;
         }
     }
 }
