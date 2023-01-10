@@ -15,7 +15,7 @@ namespace HomeWork
             this.popupManager.ShowPopup(PopupName.PRODUCT, presentationModel);
         }
 
-        public void Construct(GameContext context)
+        void IConstructListener.Construct(GameContext context)
         {
             this.popupManager = context.GetService<PopupManager>();
             this.presenterFactory = context.GetService<ProductPresentationModelFactory>();

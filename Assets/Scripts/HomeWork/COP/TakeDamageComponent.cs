@@ -1,4 +1,4 @@
-﻿/*using UnityEngine;
+﻿using UnityEngine;
 
 namespace HomeWork
 {
@@ -11,4 +11,4 @@ namespace HomeWork
             _takeDamageReceiver.Call(damage);
         }
     }
-}*/
+}

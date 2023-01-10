@@ -6,5 +6,6 @@ namespace HomeWork
     {
         event Action<int> OnHitPointsChanged;
         int HitPoints { get; }
+        int MaxHitPoints { get; }
     }
 }

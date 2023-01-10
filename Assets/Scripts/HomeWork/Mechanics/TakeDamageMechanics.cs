@@ -5,7 +5,7 @@ namespace HomeWork
     public class TakeDamageMechanics : MonoBehaviour
     {
         [SerializeField] private IntEventReceiver _takeDamageReceiver;
-        [SerializeField] private IntBehaviour _hitPoints; 
+        [SerializeField] private HitPointsEngine _hitPoints; 
         
 
         private void OnEnable()
@@ -20,7 +20,7 @@ namespace HomeWork
 
         private void OnDamageTaken(int damage)
         {
-            this._hitPoints.Value -= damage;
+            this._hitPoints.CurrentHitPoints -= damage;
         }
     }
 }

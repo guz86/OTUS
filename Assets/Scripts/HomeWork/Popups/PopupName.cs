@@ -3,6 +3,7 @@
     public enum PopupName
     {
         WELCOME = 0,
-        PRODUCT = 1
+        PRODUCT = 1,
+        UPGRADE = 2
     }
 }

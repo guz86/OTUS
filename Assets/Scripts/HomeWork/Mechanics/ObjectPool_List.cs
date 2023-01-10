@@ -25,5 +25,10 @@ namespace HomeWork
             result = _pool.First(p => p.activeSelf == false);
             return result != null;
         }
+
+        public List<GameObject> GetProjectilePool()
+        {
+            return _pool;
+        }
     }
 }

@@ -6,17 +6,22 @@ namespace HomeWork
     public class HitPointsChangedComponent : MonoBehaviour,
         IHitPointsChangedComponent
     {
-        [SerializeField] private IntBehaviour _hitPoints;
+        [SerializeField] private HitPointsEngine _hitPoints;
 
         public event Action<int> OnHitPointsChanged
         {
-            add => _hitPoints.OnValueChanged += value;
-            remove => _hitPoints.OnValueChanged -= value;
+            add => _hitPoints.OnHitPointsChanged += value;
+            remove => _hitPoints.OnHitPointsChanged -= value;
         }
         
         public int HitPoints
         {
-            get { return _hitPoints.Value; }
+            get { return _hitPoints.CurrentHitPoints; }
+        }     
+        
+        public int MaxHitPoints
+        {
+            get { return _hitPoints.MaxHitPoints; }
         }
     }
 }

@@ -8,7 +8,7 @@ namespace HomeWork
         [SerializeField] private GameObject _weaponPoint;
         [SerializeField] private float _bulletSpeed;
         
-        private void Start()
+        private void Awake()
         {
             Initialize(_bulletPrefab);
         }

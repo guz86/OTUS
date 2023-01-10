@@ -6,7 +6,7 @@ namespace HomeWork
     public class HitPointsBarAdapter : MonoBehaviour
     {
         [SerializeField]
-        private IntBehaviour _hitPoints;
+        private HitPointsEngine _hitPoints;
 
         [SerializeField]
         private HitPointsBar _view;
@@ -23,19 +23,19 @@ namespace HomeWork
 
         private void OnEnable()
         {
-            _hitPoints.OnValueChanged += this.UpdateBar;
+            _hitPoints.OnHitPointsChanged += this.UpdateBar;
         }
 
         private void OnDisable()
         {
-            _hitPoints.OnValueChanged -= this.UpdateBar;
+            _hitPoints.OnHitPointsChanged -= this.UpdateBar;
         }
 
         private void SetupBar()
         {
             this.ResetCoroutines();
 
-            var hitPoints = _hitPoints.Value;
+            var hitPoints = _hitPoints.CurrentHitPoints;
             var maxHitPoints = _maxHitPoints;
             
             var showBar = hitPoints > 0 && hitPoints < maxHitPoints;

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aa12055667841d898e28228b99e8b95, type: 3}
   m_Name: Product (Simple Sword)
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: dce960eeb66456c41b2b3384d7a6d5e1, type: 3}
   title: Simple Sword
   description: Increases the damage of the hero by 25%
   price: 200

@@ -4,26 +4,23 @@ namespace HomeWork
 {
     public sealed class HitPointsMechanics_Death : MonoBehaviour
     {
-        [SerializeField] private IntBehaviour _hitPoints;
+        [SerializeField] private HitPointsEngine _hitPoints;
         [SerializeField] private EventReceiver _deathReceiver;
 
 
         private void OnEnable()
         {
-            this._hitPoints.OnValueChanged += OnHitPointsChanged;
+            this._hitPoints.OnHitPointsEmpty += OnHitPointsChanged;
         }
 
         private void OnDisable()
         {
-            this._hitPoints.OnValueChanged -= OnHitPointsChanged;
+            this._hitPoints.OnHitPointsEmpty -= OnHitPointsChanged;
         }
 
-        private void OnHitPointsChanged(int newHitPoints)
+        private void OnHitPointsChanged()
         {
-            if (newHitPoints <= 0)
-            {
-                _deathReceiver.Call();
-            }
+            _deathReceiver.Call();
         }
     }
 }

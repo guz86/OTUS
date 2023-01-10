@@ -5,7 +5,7 @@ namespace HomeWork
     public class RestoreHitPointsMechanics : MonoBehaviour
     {
         [SerializeField] private IntEventReceiver takeDamageReceiver;
-        [SerializeField] private IntBehaviour _hitPoints;
+        [SerializeField] private HitPointsEngine _hitPoints;
         [SerializeField] private TimerBehavior _delay; 
         [SerializeField] private PeriodBehavior _restorePeriod; 
 
@@ -25,8 +25,8 @@ namespace HomeWork
 
         private void OnRestoreHitPoints()
         {
-            _hitPoints.Value += 1;
-            if (_hitPoints.Value >=10)
+            _hitPoints.CurrentHitPoints += 1;
+            if (_hitPoints.CurrentHitPoints >=_hitPoints.MaxHitPoints)
             {
                 _restorePeriod.Stop();
             }
